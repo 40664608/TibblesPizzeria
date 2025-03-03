@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tibbles Pizzeria</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="game-container">
+    <h1>Tibbles Pizzeria</h1>
+
+    <div id="top-bar">
+        <p>Money: $<span id="money">100</span></p>
+        <p>Satisfaction: <span id="satisfaction">100</span>%</p>
+        <p>Time Left: <span id="time-left">120</span>s</p>
+    </div>
+
+    <div id="pizza-creation">
+        <h2>Make a Pizza</h2>
+        <div id="pizza-preview"></div>
+        <button id="add-dough">Add Dough</button>
+        <button id="add-sauce">Add Sauce</button>
+        <button id="add-cheese">Add Cheese</button>
+        <button id="add-pepperoni">Add Pepperoni</button>
+        <button id="serve-pizza">Serve Pizza</button>
+    </div>
+
+    <div id="customer-queue">
+        <h2>Customers</h2>
+        <ul id="customers-list"></ul>
+    </div>
+
+    <div id="day-end-menu" class="hidden">
+        <h2>End of Day</h2>
+        <p>Earnings: $<span id="earnings">0</span></p>
+        <p>Expenses: $<span id="expenses">0</span></p>
+        <button id="next-day">Continue to Next Day</button>
+    </div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
