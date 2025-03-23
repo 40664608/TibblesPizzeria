@@ -1,39 +1,93 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 #game-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #top-bar {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
 #pizza-creation, #customer-queue {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 16px;
-  cursor: pointer;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .hidden {
-  display: none;
+    display: none;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.customer {
+    animation: slideIn 0.5s ease-out;
+}
+
+@media (max-width: 600px) {
+    #game-container {
+        width: 90%;
+        padding: 10px;
+    }
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+#satisfaction-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#satisfaction-progress {
+    height: 100%;
+    background-color: green;
+    border-radius: 5px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+#leaderboard {
+    margin-top: 20px;
+}
+
+#leaderboard-list {
+    list-style-type: decimal;
+    padding-left: 20px;
 }
