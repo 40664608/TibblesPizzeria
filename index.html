@@ -5,44 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tibbles Pizzeria</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="game-container">
-    <h1>Tibbles Pizzeria</h1>
 
-    <!-- Main Menu -->
-    <div id="main-menu">
-        <button id="new-game">New Game</button>
-        <button id="continue">Continue</button>
-        <button id="settings">Settings</button>
-        <button id="exit">Exit</button>
+<div class="starting-page">
+
+    <div class="pizza-group pizza1">
+        <div class="pizza-base"></div>
+        <div class="pizza-red-layer"></div>
+        <div class="pizza-orange-layer"></div>
+        <div class="topping" style="left: 967px; top: 971px;"></div>
+        <div class="topping" style="left: 1092px; top: 899px;"></div>
+        <div class="topping" style="left: 967px; top: 1105px;"></div>
+        <div class="topping" style="left: 1092px; top: 1157px;"></div>
+        <div class="topping" style="left: 1217px; top: 964px;"></div>
+        <div class="topping" style="left: 1217px; top: 1105px;"></div>
+        <div class="topping" style="left: 1092px; top: 1021px;"></div>
     </div>
 
-    <!-- Settings Menu (Initially Hidden) -->
-    <div id="settings-menu" class="hidden">
-        <h2>Settings</h2>
-        <button id="language">Language</button>
-        <button id="restart">Restart</button>
-        <button id="back-to-main">Back to Main Menu</button>
+    <div class="pizza-group pizza2">
+        <div class="pizza-base"></div>
+        <div class="pizza-red-layer"></div>
+        <div class="pizza-orange-layer"></div>
+        <div class="topping" style="left: 838px; top: -108px;"></div>
+        <div class="topping" style="left: 963px; top: -180px;"></div>
+        <div class="topping" style="left: 838px; top: 26px;"></div>
+        <div class="topping" style="left: 963px; top: 78px;"></div>
+        <div class="topping" style="left: 1088px; top: -115px;"></div>
+        <div class="topping" style="left: 1088px; top: 26px;"></div>
+        <div class="topping" style="left: 963px; top: -58px;"></div>
     </div>
 
-    <!-- Language Menu (Initially Hidden) -->
-    <div id="language-menu" class="hidden">
-        <h2>Language</h2>
-        <button id="english">English</button>
-        <button id="french">French</button>
-        <button id="italian">Italian</button>
-        <button id="spanish">Spanish</button>
-        <button id="german">German</button>
-        <button id="back-to-settings">Back to Settings</button>
+    <div class="pizza-group pizza3">
+        <div class="pizza-base"></div>
+        <div class="pizza-red-layer"></div>
+        <div class="pizza-orange-layer"></div>
+        <div class="topping" style="left: 43px; top: 665px;"></div>
+        <div class="topping" style="left: 168px; top: 593px;"></div>
+        <div class="topping" style="left: 43px; top: 799px;"></div>
+        <div class="topping" style="left: 168px; top: 851px;"></div>
+        <div class="topping" style="left: 293px; top: 658px;"></div>
+        <div class="topping" style="left: 293px; top: 799px;"></div>
+        <div class="topping" style="left: 168px; top: 715px;"></div>
     </div>
 
-    <!-- Restart Confirmation (Initially Hidden) -->
-    <div id="restart-confirm" class="hidden">
-        <h2>Restart</h2>
-        <p>Are you sure you want to restart?</p>
-        <button id="confirm-restart">Yes</button>
-        <button id="cancel-restart">No</button>
+    <div class="title">TIBBLES PIZZERIA</div>
+
+    <div class="button btn-play" id="play-game">Play</div>
+    <div class="button btn-settings" id="settings">Settings</div>
+</div>
+
+<div class="settings-page" id="settings-page" style="display: none;">
+    <div class="settings-container">
+        <div class="settings-bg"></div>
+
+        <div class="settings-header-bar"></div>
+        <div class="settings-title">Settings</div>
+
+        <div class="exit-button" id="exit-settings">
+            <div class="exit-line1"></div>
+            <div class="exit-line2"></div>
+        </div>
+
+        <div class="icon-button music-wrapper">
+            <div class="icon-image music-icon"></div>
+        </div>
+        <div class="icon-button sound-wrapper">
+            <div class="icon-image sound-icon"></div>
+        </div>
+        <div class="icon-button alert-wrapper">
+            <div class="icon-image alert-icon"></div>
+        </div>
+
+        <div class="language-button" id="language">
+            <div class="text">Language</div>
+        </div>
+    </div>
+</div>
+
+<div class="language-page" style="display: none;">
+    <div class="language-button en"></div>
+    <div class="language-label en">ENGLISH</div>
+
+    <div class="language-button fr"></div>
+    <div class="language-label fr">FRENCH</div>
+
+    <div class="language-button it"></div>
+    <div class="language-label it">ITALIAN</div>
+
+    <div class="language-button es"></div>
+    <div class="language-label es">SPANISH</div>
+
+    <div class="language-button de"></div>
+    <div class="language-label de">GERMAN</div>
+
+    <div class="language-button pt"></div>
+    <div class="language-label pt">PORTUGUESE</div>
+
+    <div class="exit-button" id="exit-language">
+        <div class="exit-line1"></div>
+        <div class="exit-line2"></div>
+    </div>
+</div>
+
+<div class="restart-page" id="restart-page" style="display: none;">
+    <div class="restart-container">
+        <div class="restart-bg"></div>
+        <div class="restart-header-bar"></div>
+        <div class="restart-text">Are you sure You want to restart?</div>
+
+        <div class="restart-button yes-button">
+            <div class="yes-icon"></div>
+        </div>
+        <div class="restart-button no-button">
+            <div class="no-icon"></div>
+        </div>
+
+        <div class="exit-button" id="exit-restart">
+            <div class="exit-line1"></div>
+            <div class="exit-line2"></div>
+        </div>
+
+        <div class="label yes-label">YES</div>
+        <div class="label no-label">NO</div>
     </div>
 </div>
 

@@ -1,68 +1,78 @@
-// DOM Elements
-const mainMenu = document.getElementById('main-menu');
-const settingsMenu = document.getElementById('settings-menu');
-const languageMenu = document.getElementById('language-menu');
-const restartConfirm = document.getElementById('restart-confirm');
+const startingPage = document.querySelector('.starting-page');
+const settingsPage = document.getElementById('settings-page');
+const restartPage = document.getElementById('restart-page');
+const languagePage = document.querySelector('.language-page');
 
-// Buttons
-document.getElementById('new-game').addEventListener('click', () => {
+document.getElementById('play-game').addEventListener('click', () => {
     window.location.href = 'game.html';
 });
 
-document.getElementById('continue').addEventListener('click', () => {
-    alert('Continuing Game...');
-});
-
 document.getElementById('settings').addEventListener('click', () => {
-    mainMenu.classList.add('hidden');
-    settingsMenu.classList.remove('hidden');
+    startingPage.style.display = 'none';
+    settingsPage.style.display = 'block';
 });
 
-document.getElementById('exit').addEventListener('click', () => {
-    alert('Exiting Game...');
-    window.close();
+document.getElementById('exit-settings').addEventListener('click', () => {
+    settingsPage.style.display = 'none';
+    startingPage.style.display = 'block';
 });
 
 document.getElementById('language').addEventListener('click', () => {
-    settingsMenu.classList.add('hidden');
-    languageMenu.classList.remove('hidden');
+    settingsPage.style.display = 'none';
+    languagePage.style.display = 'block';
 });
 
-document.getElementById('restart').addEventListener('click', () => {
-    settingsMenu.classList.add('hidden');
-    restartConfirm.classList.remove('hidden');
+const exitLanguage = document.getElementById('exit-language');
+if (exitLanguage) {
+    exitLanguage.addEventListener('click', () => {
+        languagePage.style.display = 'none';
+        settingsPage.style.display = 'block';
+    });
+}
+
+const languages = ['en', 'fr', 'it', 'es', 'de', 'pt'];
+languages.forEach(lang => {
+    const button = document.querySelector(`.language-button.${lang}`);
+    if (button) {
+        button.addEventListener('click', () => {
+            setLanguage(lang);
+        });
+    }
 });
 
-document.getElementById('back-to-main').addEventListener('click', () => {
-    settingsMenu.classList.add('hidden');
-    mainMenu.classList.remove('hidden');
-});
+function setLanguage(languageCode) {
+    const languageNames = {
+        en: 'English',
+        fr: 'French',
+        it: 'Italian',
+        es: 'Spanish',
+        de: 'German',
+        pt: 'Portuguese'
+    };
 
-document.getElementById('back-to-settings').addEventListener('click', () => {
-    languageMenu.classList.add('hidden');
-    settingsMenu.classList.remove('hidden');
-});
+    alert(`Language set to ${languageNames[languageCode] || 'Unknown'}`);
+    languagePage.style.display = 'none';
+    settingsPage.style.display = 'block';
+}
 
-document.getElementById('confirm-restart').addEventListener('click', () => {
-    alert('Game Restarted!');
-    restartConfirm.classList.add('hidden');
-    mainMenu.classList.remove('hidden');
-});
+const yesButton = document.querySelector('.yes-button');
+const noButton = document.querySelector('.no-button');
+const exitRestart = document.getElementById('exit-restart');
 
-document.getElementById('cancel-restart').addEventListener('click', () => {
-    restartConfirm.classList.add('hidden');
-    settingsMenu.classList.remove('hidden');
-});
+if (yesButton && noButton && exitRestart) {
+    yesButton.addEventListener('click', () => {
+        alert('Game Restarted!');
+        restartPage.style.display = 'none';
+        startingPage.style.display = 'block';
+    });
 
-// Language Selection
-document.getElementById('english').addEventListener('click', () => setLanguage('English'));
-document.getElementById('french').addEventListener('click', () => setLanguage('French'));
-document.getElementById('italian').addEventListener('click', () => setLanguage('Italian'));
-document.getElementById('spanish').addEventListener('click', () => setLanguage('Spanish'));
-document.getElementById('german').addEventListener('click', () => setLanguage('German'));
+    noButton.addEventListener('click', () => {
+        restartPage.style.display = 'none';
+        settingsPage.style.display = 'block';
+    });
 
-function setLanguage(language) {
-    alert(`Language set to ${language}`);
-    languageMenu.classList.add('hidden');
-    settingsMenu.classList.remove('hidden');
+    exitRestart.addEventListener('click', () => {
+        restartPage.style.display = 'none';
+        settingsPage.style.display = 'block';
+    });
 }

@@ -1,74 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Tibbles Pizzeria</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 </head>
-<body>
-<div id="game-container">
-    <h1>Tibbles Pizzeria</h1>
+<body class="game-page">
+<div class="title-main">TIBBLES PIZZERIA</div>
 
-    <div id="top-bar">
-        <p>Money: $<span id="money">100</span></p>
-        <p>Satisfaction: <span id="satisfaction">100</span>%</p>
-        <p>Time Left: <span id="time-left">120</span>s</p>
-    </div>
+<div class="button new-game">New Game</div>
+<div class="button continue-game">Continue Game</div>
+<div class="button progress">Progress</div>
 
-    <div id="satisfaction-bar">
-        <div id="satisfaction-progress"></div>
-    </div>
-
-    <div id="controls">
-        <button id="save-game">Save Game</button>
-        <button id="load-game">Load Game</button>
-        <button id="toggle-sound">Toggle Sound</button>
-    </div>
-
-    <div id="pizza-creation">
-        <h2>Make a Pizza</h2>
-        <div id="pizza-preview"></div>
-        <button id="add-dough">Add Dough</button>
-        <button id="add-sauce">Add Sauce</button>
-        <button id="add-cheese">Add Cheese</button>
-        <button id="add-pepperoni">Add Pepperoni</button>
-        <button id="serve-pizza">Serve Pizza</button>
-    </div>
-
-    <div id="upgrades-staff">
-        <h2>Upgrades & Staff</h2>
-        <button id="hire-chef">Hire Chef ($50)</button>
-        <button id="hire-server">Hire Server ($30)</button>
-        <button id="upgrade-oven">Upgrade Oven ($100)</button>
-        <button id="upgrade-tables">Upgrade Tables ($80)</button>
-    </div>
-
-    <div id="customer-queue">
-        <h2>Customers</h2>
-        <ul id="customers-list"></ul>
-    </div>
-
-    <div id="day-end-menu" class="hidden">
-        <h2>End of Day</h2>
-        <p>Earnings: $<span id="earnings">0</span></p>
-        <p>Expenses: $<span id="expenses">0</span></p>
-        <button id="next-day">Continue to Next Day</button>
-    </div>
-
-    <div id="leaderboard" class="hidden">
-        <h2>Leaderboard</h2>
-        <ol id="leaderboard-list"></ol>
-    </div>
+<div class="pizza-group pizza1">
+    <div class="pizza-base"></div>
+    <div class="pizza-red-layer"></div>
+    <div class="pizza-orange-layer"></div>
+    <div class="topping" style="left: 967px; top: 971px;"></div>
+    <div class="topping" style="left: 1092px; top: 899px;"></div>
+    <div class="topping" style="left: 967px; top: 1105px;"></div>
+    <div class="topping" style="left: 1092px; top: 1157px;"></div>
+    <div class="topping" style="left: 1217px; top: 964px;"></div>
+    <div class="topping" style="left: 1217px; top: 1105px;"></div>
+    <div class="topping" style="left: 1092px; top: 1021px;"></div>
 </div>
 
-<audio id="background-music" loop>
-    <source src="sounds/background-music.mp3" type="audio/mpeg">
-</audio>
-<audio id="oven-ding">
-    <source src="sounds/oven-ding.mp3" type="audio/mpeg">
-</audio>
+<div class="pizza-group pizza2">
+    <div class="pizza-base"></div>
+    <div class="pizza-red-layer"></div>
+    <div class="pizza-orange-layer"></div>
+    <div class="topping" style="left: 838px; top: -108px;"></div>
+    <div class="topping" style="left: 963px; top: -180px;"></div>
+    <div class="topping" style="left: 838px; top: 26px;"></div>
+    <div class="topping" style="left: 963px; top: 78px;"></div>
+    <div class="topping" style="left: 1088px; top: -115px;"></div>
+    <div class="topping" style="left: 1088px; top: 26px;"></div>
+    <div class="topping" style="left: 963px; top: -58px;"></div>
+</div>
 
-<script src="js/game.js"></script>
+<div class="pizza-group pizza3">
+    <div class="pizza-base"></div>
+    <div class="pizza-red-layer"></div>
+    <div class="pizza-orange-layer"></div>
+    <div class="topping" style="left: 43px; top: 665px;"></div>
+    <div class="topping" style="left: 168px; top: 593px;"></div>
+    <div class="topping" style="left: 43px; top: 799px;"></div>
+    <div class="topping" style="left: 168px; top: 851px;"></div>
+    <div class="topping" style="left: 293px; top: 658px;"></div>
+    <div class="topping" style="left: 293px; top: 799px;"></div>
+    <div class="topping" style="left: 168px; top: 715px;"></div>
+</div>
 </body>
 </html>
