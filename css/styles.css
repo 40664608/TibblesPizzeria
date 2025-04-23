@@ -449,3 +449,397 @@ body {
   justify-content: center;
   color: #fff;
 }
+
+.progress-container {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background: #F4C9A1;
+}
+
+.progress-bg {
+  position: absolute;
+  width: 1293px;
+  height: 873px;
+  left: 104px;
+  top: 75px;
+  background: #CCA580;
+  border-radius: 22px;
+}
+
+.progress-header-bar {
+  position: absolute;
+  width: 666px;
+  height: 100px;
+  left: 387px;
+  top: 49px;
+  background: #AD8B6A;
+  border-radius: 27px;
+}
+
+.progress-title {
+  position: absolute;
+  width: 506px;
+  height: 68px;
+  left: 498px;
+  top: 65px;
+  font-family: 'Irish Grover';
+  font-size: 64px;
+  color: #000000;
+}
+
+.level-display {
+  position: absolute;
+  width: 482px;
+  height: 94px;
+  left: 571px;
+  top: 360px;
+  font-family: 'Irish Grover';
+  font-size: 96px;
+  color: #000000;
+}
+
+.xp-box-top {
+  position: absolute;
+  width: 977px;
+  height: 365px;
+  left: 231px;
+  top: 249px;
+  background: #AD8B6A;
+}
+
+.xp-amount {
+  position: absolute;
+  width: 482px;
+  height: 94px;
+  left: 533px;
+  top: 520px;
+  font-family: 'Irish Grover';
+  font-size: 64px;
+  color: #000000;
+}
+
+.xp-box-bottom {
+  position: absolute;
+  width: 977px;
+  height: 170px;
+  left: 231px;
+  top: 680px;
+  background: #AD8B6A;
+}
+
+.xp-bar-bg {
+  position: absolute;
+  width: 911px;
+  height: 61px;
+  left: 264px;
+  top: 714px;
+  background: #C6C0C0;
+  border-radius: 29px;
+}
+
+.xp-bar-fill {
+  position: absolute;
+  width: 0px;
+  height: 61px;
+  left: 264px;
+  top: 714px;
+  background: #8AC7CE;
+  border-radius: 29px;
+}
+
+.xp-to-next {
+  position: absolute;
+  width: 482px;
+  height: 94px;
+  left: 510px;
+  top: 788px;
+  font-family: 'Irish Grover';
+  font-size: 50px;
+  color: #000000;
+}
+
+.help-button {
+  position: absolute;
+  width: 92.42px;
+  height: 92.42px;
+  left: 108px;
+  top: 74px;
+}
+
+.help-bg {
+  position: absolute;
+  width: 74px;
+  height: 71px;
+  left: 117px;
+  top: 88px;
+  background: #FFFFFF;
+  border-radius: 9px;
+}
+
+.help-icon {
+  position: absolute;
+  width: 91.83px;
+  height: 91.83px;
+  left: 108.59px;
+  top: 74px;
+  background: url('../images/question.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(0.37deg);
+}
+
+.progress-exit {
+  left: 1279px;
+  top: 88px;
+}
+
+.help-page {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background: #F4C9A1;
+}
+
+.help-page .main-container {
+  position: absolute;
+  width: 1293px;
+  height: 873px;
+  left: 104px;
+  top: 75px;
+  background: #CCA580;
+  border-radius: 22px;
+}
+
+.help-page .back-button {
+  position: absolute;
+  width: 95px;
+  height: 91px;
+  left: 130px;
+  top: 98px;
+  background: #AD8B6A;
+  border-radius: 145px;
+}
+
+.help-page .back-icon {
+  position: absolute;
+  width: 63.5px;
+  height: 63.5px;
+  left: 79.5px;
+  top: 78.19px;
+  background: url('../images/back.png');
+  background-size: cover;
+  transform: rotate(-179.37deg);
+}
+
+.help-page .header-bar {
+  position: absolute;
+  width: 666px;
+  height: 100px;
+  left: 387px;
+  top: 48px;
+  background: #AD8B6A;
+  border-radius: 27px;
+}
+
+.help-page .help-title {
+  position: absolute;
+  width: 506px;
+  height: 68px;
+  left: 587px;
+  top: 64px;
+  font-family: 'Irish Grover', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 77px;
+  color: #000000;
+}
+
+.help-page .help-text {
+  position: absolute;
+  width: 964px;
+  height: 618px;
+  left: calc(50% - 964px / 2 + 40px);
+  top: 203px;
+  font-family: 'Irish Grover', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 43px;
+  line-height: 52px;
+  text-align: center;
+  color: #000000;
+}
+
+.intro-page {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background: #F4C9A1;
+}
+
+.intro-rectangle1 {
+  position: absolute;
+  width: 1293px;
+  height: 873px;
+  left: 73px;
+  top: 75px;
+  background: #CCA581;
+  border-radius: 22px;
+}
+
+.intro-rectangle2 {
+  position: absolute;
+  width: 460px;
+  height: 100px;
+  left: 490px;
+  top: 50px;
+  background: #AD8B6A;
+  border-radius: 27px;
+}
+
+.intro-title {
+  position: absolute;
+  width: 376px;
+  height: 68px;
+  left: 548px;
+  top: 66px;
+  font-family: 'Irish Grover';
+  font-size: 64px;
+  color: #000000;
+}
+
+.intro-description {
+  position: absolute;
+  width: 1182px;
+  height: 322px;
+  top: 230px;
+  left: 129px;
+  font-family: 'Irish Grover';
+  font-size: 43px;
+  text-align: center;
+  color: #000000;
+}
+
+.continue-button {
+  position: absolute;
+  width: 460px;
+  height: 100px;
+  left: 490px;
+  top: 817px;
+  background: #AD8B6A;
+  border-radius: 26px;
+  cursor: pointer;
+}
+
+.continue-text {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  line-height: 100px;
+  font-family: 'Irish Grover';
+  font-size: 64px;
+  color: #1E1E1E;
+}
+
+.character-page {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background: #F4C9A1;
+}
+
+.char-rectangle1 {
+  position: absolute;
+  width: 1293px;
+  height: 873px;
+  left: 70px;
+  top: 76px;
+  background: #CCA581;
+  border-radius: 22px;
+}
+
+.char-rectangle3 {
+  position: absolute;
+  width: 677px;
+  height: 100px;
+  left: 354px;
+  top: 26px;
+  background: #AD8B6A;
+  border-radius: 27px;
+}
+
+.char-title {
+  position: absolute;
+  width: 779px;
+  height: 68px;
+  left: 411px;
+  top: 42px;
+  font-family: 'Irish Grover';
+  font-size: 64px;
+  color: #000000;
+}
+
+.michael-icon {
+  position: absolute;
+  width: 342px;
+  height: 575px;
+  left: 375px;
+  top: 155px;
+  background-image: url('../images/michael.png');
+  background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.michael-button {
+  position: absolute;
+  width: 312px;
+  height: 90px;
+  left: 298px;
+  top: 767px;
+  background: #AD8B6A;
+  border-radius: 26px;
+  cursor: pointer;
+}
+
+.michael-text {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-family: 'Irish Grover';
+  font-size: 58px;
+  color: #1E1E1E;
+}
+
+.sally-icon {
+  position: absolute;
+  width: 381px;
+  height: 650px;
+  left: 693px;
+  top: 76px;
+  background-image: url('../images/sally.png');
+  background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.sally-button {
+  position: absolute;
+  width: 312px;
+  height: 90px;
+  left: 827px;
+  top: 767px;
+  background: #AD8B6A;
+  border-radius: 26px;
+  cursor: pointer;
+}
+
+.sally-text {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-family: 'Irish Grover';
+  font-size: 58px;
+  color: #1E1E1E;
+}
