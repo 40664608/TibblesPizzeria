@@ -1315,3 +1315,155 @@ body {
     font-size: 32px;
     color: #fff;
 }
+
+.pizza-making-scene {
+    display: none;
+    background: #F4C9A1;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+}
+
+.pizza-making-scene .back-button {
+    position: absolute;
+    width: 95px;
+    height: 91px;
+    left: 30px;
+    top: 10px;
+    background: #AD8B6A;
+    border-radius: 145px;
+}
+
+.orders-panel {
+    position: absolute;
+    width: 459px;
+    height: 923px;
+    left: 30px;
+    top: 53px;
+}
+
+.orders-bg {
+    position: absolute;
+    width: 289px;
+    height: 859px;
+    background: #DDB895;
+    left: 30px;
+    top: 117px;
+}
+
+.orders-title {
+    position: absolute;
+    width: 341px;
+    height: 60px;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 50px;
+    left: 148px;
+    top: 53px;
+    color: black;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.order-box {
+    position: absolute;
+    width: 252px;
+    height: 185px;
+    background: #CCA581;
+    left: 46px;
+    top: 140px;
+}
+
+.order-name {
+    position: absolute;
+    width: 147px;
+    height: 60px;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 40px;
+    left: 63px;
+    top: 141px;
+    color: black;
+}
+
+.order-item {
+    position: absolute;
+    width: 203px;
+    height: 124px;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 36px;
+    left: 73px;
+    top: 201px;
+    color: black;
+    text-align: center;
+}
+
+.inventory-panel {
+    position: absolute;
+    width: 384px;
+    height: 923px;
+    left: 1126px;
+    top: 53px;
+}
+
+.inventory-bg {
+    position: absolute;
+    width: 289px;
+    height: 859px;
+    background: #DDB895;
+    left: 0px;
+    top: 64px;
+}
+
+.inventory-title {
+    position: absolute;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 50px;
+    width: 341px;
+    left: 43px;
+    top: 0px;
+    color: black;
+}
+
+.inventory-box {
+    position: absolute;
+    width: 252px;
+    height: 106px;
+    background: #CCA581;
+    left: 19px;
+    cursor: pointer;
+}
+
+.inventory-dough { top: 87px; }
+.inventory-sauce { top: 212px; }
+.inventory-cheese { top: 337px; }
+.inventory-pepperoni { top: 462px; }
+
+.inventory-label {
+    position: absolute;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 36px;
+    left: 32px;
+}
+
+.dough-label { top: 110px; }
+.sauce-label { top: 220px; }
+.cheese-label { top: 364px; }
+.pepperoni-label { top: 489px; }
+
+.inventory-count {
+    position: absolute;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 48px;
+    left: 207px;
+}
+
+.dough-count { top: 110px; }
+.sauce-count { top: 234px; }
+.cheese-count { top: 362px; }
+.pepperoni-count { top: 478px; }
+
+.pizza {
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: #F4C9A1;
+}

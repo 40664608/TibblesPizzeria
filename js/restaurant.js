@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const shopPage = document.getElementById('shop-page');
     const shopIcon = document.querySelector('.shop-icon');
     const backToRestaurantBtn = document.getElementById('back-to-restaurant');
+    const plusButton = document.querySelector('.plus-button');
+    const pizzaMakingScene = document.getElementById('pizza-making-scene');
+    const backFromPizzaButton = document.getElementById('back-to-restaurant-from-pizza');
+    const doughBox = document.querySelector('.inventory-box.inventory-dough');
+    const doughCountEl = document.querySelector('.dough-count');
 
     const shopMoneyDisplay = document.querySelector('.shop-money-amount');
     const inventoryItems = document.querySelectorAll('.inventory-item');
@@ -49,6 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
         restaurantScene.style.display = 'block';
     });
 
+    plusButton.addEventListener('click', () => {
+        restaurantScene.style.display = 'none';
+        pizzaMakingScene.style.display = 'block';
+    });
+
+    backFromPizzaButton.addEventListener('click', () => {
+        pizzaMakingScene.style.display = 'none';
+        restaurantScene.style.display = 'block';
+    });
+
     document.querySelectorAll('.shop-item').forEach(item => {
         item.addEventListener('click', () => {
             const itemBox = item.querySelector('.item-box');
@@ -75,6 +90,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    let currentPizza = {
+        dough: false,
+        sauce: false,
+        cheese: false,
+        pepperoni: false
+    };
+
+    doughBox.addEventListener('click', () => {
+        const count = inventory.dough;
+
+        if (count > 0 && !currentPizza.dough) {
+            currentPizza.dough = true;
+            doughCountEl.textContent = count - 1;
+
+            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
+            if (pizzaDisplay) {
+                pizzaDisplay.style.backgroundColor = '#AF8060';
+            }
+        } else if (count === 0) {
+            alert("No more dough in inventory!");
+        }
+    });
+
+    inventory.dough--;
     updateInventoryUI();
     updateMoneyUI();
 });
