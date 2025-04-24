@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Istok+Web&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="restaurant-scene">
+
+    <div class="top-bar">
+        <div class="money">Money</div>
+        <div class="money-amount">£0</div>
+        <div class="time-label">Time</div>
+        <div class="time">9:00am</div>
+        <div class="day-label">Day</div>
+        <div class="day">1</div>
+        <div class="shop-icon">
+            <div class="circle"></div>
+            <div class="shop-image"></div>
+        </div>
+        <div class="menu-icon">
+            <div class="circle"></div>
+            <div class="menu-image"></div>
+        </div>
+    </div>
+
+    <div class="customers">
+        <h2>Customers</h2>
+    </div>
+
+    <div class="staff">
+        <h2>Staff</h2>
+        <div class="staff-michael">
+            <div class="staff-michael-bg"></div>
+            <div class="michael-name">Michael</div>
+            <div class="michael-avatar"></div>
+            <div class="michael-title">Chef lvl 1</div>
+            <div class="michael-xp">0xp/100xp</div>
+            <div class="michael-status">currently not busy</div>
+            <div class="michael-divider"></div>
+            <div class="michael-face"></div>
+        </div>
+    </div>
+
+    <div class="pizzas">
+        <h2>Pizzas</h2>
+        <div class="plus-button">
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+        </div>
+    </div>
+
+    <div class="inventory">
+        <h2>Inventory</h2>
+        <div class="inventory-item dough">Dough <span class="count">1</span></div>
+        <div class="inventory-item sauce">Tomato Sauce <span class="count">1</span></div>
+        <div class="inventory-item cheese">Cheese <span class="count">1</span></div>
+    </div>
+
+    <div class="pizza pizza-1"></div>
+    <div class="pizza pizza-2"></div>
+    <div class="pizza pizza-3"></div>
+    <div class="pizza pizza-4"></div>
+
+</div>
+
+<div class="settings-page" id="settings-page" style="display: none;">
+    <div class="settings-container">
+        <div class="settings-bg"></div>
+
+        <div class="settings-header-bar"></div>
+        <div class="settings-title">Settings</div>
+
+        <div class="exit-button" id="exit-settings">
+            <div class="exit-line1"></div>
+            <div class="exit-line2"></div>
+        </div>
+
+        <div class="icon-button music-wrapper">
+            <div class="icon-image music-icon"></div>
+        </div>
+        <div class="icon-button sound-wrapper">
+            <div class="icon-image sound-icon"></div>
+        </div>
+        <div class="icon-button alert-wrapper">
+            <div class="icon-image alert-icon"></div>
+        </div>
+
+        <div class="language-button" id="language">
+            <div class="text">Language</div>
+        </div>
+
+        <div class="restart-button" id="restart">
+            <div class="text">Restart</div>
+        </div>
+
+        <div class="back-home-button" id="back-home">
+            <div class="back-home-label">Back Home</div>
+        </div>
+    </div>
+</div>
+
+<div class="shop-page" id="shop-page" style="display: none;">
+    <div class="top-bar">
+        <div class="shop-money">Money</div>
+        <div class="shop-money-amount">£1000</div>
+        <div class="back-button" id="back-to-restaurant">
+            <div class="circle"></div>
+            <div class="back-icon"></div>
+        </div>
+        <div class="menu-icon">
+            <div class="circle"></div>
+            <div class="menu-image"></div>
+        </div>
+    </div>
+
+    <div class="shop-items">
+        <div class="shop-item">
+            <div class="item-box dough"></div>
+            <div class="item-price">£50</div>
+            <div class="dough-icon"></div>
+        </div>
+        <div class="shop-item">
+            <div class="item-box sauce"></div>
+            <div class="item-price">£100</div>
+            <div class="sauce-icon"></div>
+        </div>
+        <div class="shop-item">
+            <div class="item-box cheese"></div>
+            <div class="item-price">£125</div>
+            <div class="cheese-icon"></div>
+        </div>
+        <div class="shop-item">
+            <div class="item-box pepperoni"></div>
+            <div class="overlay"></div>
+            <div class="item-price">£200</div>
+            <div class="pepperoni-icon"></div>
+            <div class="lock-message">Level Up to Unlock</div>
+        </div>
+        <div class="shop-item">
+            <div class="item-box olives"></div>
+            <div class="overlay"></div>
+            <div class="item-price">£300</div>
+            <div class="olives-icon"></div>
+            <div class="lock-message">Level Up to Unlock</div>
+        </div>
+        <div class="shop-item">
+            <div class="item-box peppers"></div>
+            <div class="overlay"></div>
+            <div class="item-price">£400</div>
+            <div class="peppers-icon"></div>
+            <div class="lock-message">Level Up to Unlock</div>
+        </div>
+    </div>
+</div>
+
+<script src="js/restaurant.js"></script>
+</body>
+</html>

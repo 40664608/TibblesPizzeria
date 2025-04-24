@@ -63,9 +63,11 @@ updateXP();
   });
 
   michaelBtn.addEventListener("click", () => {
+  window.location.href = "../michael-restaurant.html";
   });
 
   sallyBtn.addEventListener("click", () => {
+  window.location.href = "../sally-restaurant.html";
   });
 
   continueGameBtn.addEventListener("click", () => {
