@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const cheeseCountEl = document.querySelector('.cheese-count .count');
     const pepperoniBox = document.querySelector('.inventory-box.inventory-pepperoni');
     const pepperoniCountEl = document.querySelector('.pepperoni-count .count');
+    const pizzaDisplay = document.querySelector('.pizza-display');
+    const doughLayer = document.querySelector('.dough');
+    const sauceLayer = document.querySelector('.sauce');
+    const cheeseLayer = document.querySelector('.cheese');
+    const pepperoniLayer = document.querySelector('.pepperoni');
 
     const shopMoneyDisplay = document.querySelector('.shop-money-amount');
     const inventoryItems = document.querySelectorAll('.inventory-item');
@@ -48,6 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
             peppers: 4
         };
         return !unlockLevel[item] || playerLevel >= unlockLevel[item];
+    }
+
+    function refreshShopUI() {
+        document.querySelectorAll('.shop-item').forEach(item => {
+            const type = Array.from(item.querySelector('.item-box').classList)
+                .find(cls => ['dough', 'sauce', 'cheese', 'pepperoni', 'olives', 'peppers'].includes(cls));
+
+            if (isUnlocked(type)) {
+                item.querySelector('.overlay').style.display = 'none';
+            } else {
+                item.querySelector('.overlay').style.display = 'block';
+            }
+        });
     }
 
     shopIcon.addEventListener('click', () => {
@@ -104,84 +122,58 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     doughBox.addEventListener('click', () => {
-        const count = inventory.dough;
-
-        if (count > 0 && !currentPizza.dough) {
+        if (inventory.dough > 0 && !currentPizza.dough) {
             currentPizza.dough = true;
             inventory.dough--;
             doughCountEl.textContent = inventory.dough;
-
-            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
-            if (pizzaDisplay) {
-                pizzaDisplay.style.backgroundColor = '#AF8060';
-            }
-        } else if (count === 0) {
+            doughLayer.style.display = 'block';
+        } else if (inventory.dough === 0) {
             alert("No more dough in inventory!");
         }
     });
 
     sauceBox.addEventListener('click', () => {
-        const count = inventory.sauce;
-
-        if (currentPizza.dough && count > 0 && !currentPizza.sauce) {
+        if (!currentPizza.dough) {
+            alert("Add dough first!");
+        } else if (inventory.sauce > 0 && !currentPizza.sauce) {
             currentPizza.sauce = true;
             inventory.sauce--;
             sauceCountEl.textContent = inventory.sauce;
-
-            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
-            if (pizzaDisplay) {
-                const sauceLayer = document.createElement('div');
-                sauceLayer.className = 'pizza-sauce-layer';
-                pizzaDisplay.appendChild(sauceLayer);
-            }
-        } else if (!currentPizza.dough) {
-            alert("You need to add dough first!");
-        } else if (count === 0) {
+            sauceLayer.style.display = 'block';
+        } else if (inventory.sauce === 0) {
             alert("No more sauce in inventory!");
         }
     });
 
     cheeseBox.addEventListener('click', () => {
-        const count = inventory.cheese;
-
-        if (count > 0 && currentPizza.dough && !currentPizza.cheese) {
+        if (!currentPizza.dough) {
+            alert("Add dough first!");
+        } else if (!currentPizza.sauce) {
+            alert("Add sauce first!");
+        } else if (inventory.cheese > 0 && !currentPizza.cheese) {
             currentPizza.cheese = true;
             inventory.cheese--;
             cheeseCountEl.textContent = inventory.cheese;
-
-            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
-            if (pizzaDisplay) {
-                const cheeseLayer = document.createElement('div');
-                cheeseLayer.classList.add('pizza-cheese-layer');
-                pizzaDisplay.appendChild(cheeseLayer);
-            }
-        } else if (count === 0) {
+            cheeseLayer.style.display = 'block';
+        } else if (inventory.cheese === 0) {
             alert("No more cheese in inventory!");
-        } else if (!currentPizza.dough) {
-            alert("Add dough first!");
         }
     });
 
     pepperoniBox.addEventListener('click', () => {
-        const count = inventory.pepperoni;
-
-        if (count > 0 && currentPizza.dough && currentPizza.cheese && !currentPizza.pepperoni) {
+        if (!currentPizza.dough) {
+            alert("Add dough first!");
+        } else if (!currentPizza.sauce) {
+            alert("Add sauce first!");
+        } else if (!currentPizza.cheese) {
+            alert("Add cheese first!");
+        } else if (inventory.pepperoni > 0 && !currentPizza.pepperoni) {
             currentPizza.pepperoni = true;
             inventory.pepperoni--;
             pepperoniCountEl.textContent = inventory.pepperoni;
-
-            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
-            if (pizzaDisplay) {
-                const pepperoniLayer = document.createElement('div');
-                pepperoniLayer.classList.add('pizza-pepperoni-layer');
-                pizzaDisplay.appendChild(pepperoniLayer);
-            }
-        } else if (count === 0) {
+            pepperoniLayer.style.display = 'block';
+        } else if (inventory.pepperoni === 0) {
             alert("No more pepperoni in inventory!");
-        } else if (!currentPizza.cheese) {
-            alert("Add cheese first!");
-        } else if (!currentPizza.dough) {
-            alert("Add dough first!");
         }
     });
 
@@ -190,6 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.restaurant-scene').style.display = 'block';
     });
 
+    document.getElementById('clear-pizza').addEventListener('click', () => {
+        currentPizza = { dough: false, sauce: false, cheese: false, pepperoni: false };
+        document.querySelectorAll('.dough, .sauce, .cheese, .pepperoni').forEach(layer => {
+            layer.style.display = 'none';
+        });
+    });
+
     updateInventoryUI();
     updateMoneyUI();
+    refreshShopUI();
 });

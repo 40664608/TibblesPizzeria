@@ -1495,43 +1495,50 @@ body {
   background-color: #9c7859;
 }
 
-.dough {
-  position: absolute;
-  width: 588px;
-  height: 590px;
-  left: 423px;
-  top: 272px;
+.pizza-display {
+    position: relative;
+    width: 588px;
+    height: 590px;
+    margin: 0 auto;
+}
 
-  background: #AF8060;
-  border-radius: 50%;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
-  z-index: 1;
+.dough, .sauce, .cheese, .pepperoni {
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+}
+
+.dough {
+    width: 100%;
+    height: 100%;
+    background: #AF8060;
+    z-index: 1;
 }
 
 .sauce {
-  position: absolute;
-  width: 548px;
-  height: 546px;
-  left: 443px;
-  top: 294px;
-
-  background: #D10303;
-  border-radius: 50%;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+    width: 93%;
+    height: 93%;
+    background: #D10303;
+    top: 3.5%;
+    left: 3.5%;
+    z-index: 2;
 }
 
 .cheese {
-  position: absolute;
-  width: 525px;
-  height: 522px;
-  left: 457px;
-  top: 306px;
+    width: 89%;
+    height: 89%;
+    background: #FF9D00;
+    top: 5.5%;
+    left: 5.5%;
+    z-index: 3;
+}
 
-  background: #FF9D00;
-  border-radius: 50%;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
-  z-index: 3;
+.pepperoni {
+    width: 20px;
+    height: 20px;
+    background: #D10303;
+    z-index: 4;
 }
 
 .ellipse {
@@ -2005,3 +2012,5 @@ body {
   line-height: 23px;
   color: #000000;
 }
+
+.dough, .sauce, .cheese, .pepperoni { display: none; }

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const helpPage = document.querySelector(".help-page");
   const introPage = document.querySelector(".intro-page");
   const characterPage = document.querySelector(".character-page");
+  const introContinueBtn = document.getElementById("intro-continue");
 
   const michaelBtn = document.querySelector(".michael-button");
   const sallyBtn = document.querySelector(".sally-button");
@@ -25,19 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const xpToNextDisplay = document.querySelector(".xp-to-next");
 
 function updateXP() {
-  xpAmountDisplay.textContent = `${xp}xp / ${xpToNextLevel}xp`;
-  xpToNextDisplay.textContent = `${xpToNextLevel - xp} xp til next level`;
+    if (xp >= xpToNextLevel) {
+        level++;
+        xp = 0;
+        xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
+        alert(`Level up! You are now level ${level}`);
+    }
 
-  if (xp >= xpToNextLevel) {
-    level++;
-    xp = 0;
-    alert(`Level up! You are now level ${level}`);
-  }
-
-  levelDisplay.textContent = `Level ${level}`;
-
-  const xpPercentage = (xp / xpToNextLevel) * 100;
-  xpBarFill.style.width = `${xpPercentage}%`;
+    xpAmountDisplay.textContent = `${xp}xp / ${xpToNextLevel}xp`;
+    xpToNextDisplay.textContent = `${xpToNextLevel - xp} xp til next level`;
+    levelDisplay.textContent = `Level ${level}`;
+    xpBarFill.style.width = `${(xp / xpToNextLevel) * 100}%`;
 }
 
 function earnXP(amount) {
