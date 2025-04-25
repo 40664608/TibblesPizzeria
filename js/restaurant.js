@@ -7,7 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const pizzaMakingScene = document.getElementById('pizza-making-scene');
     const backFromPizzaButton = document.getElementById('back-to-restaurant-from-pizza');
     const doughBox = document.querySelector('.inventory-box.inventory-dough');
-    const doughCountEl = document.querySelector('.dough-count');
+    const doughCountEl = document.querySelector('.dough-count .count');
+    const sauceBox = document.querySelector('.inventory-box.inventory-sauce');
+    const sauceCountEl = document.querySelector('.sauce-count .count');
+    const cheeseBox = document.querySelector('.inventory-box.inventory-cheese');
+    const cheeseCountEl = document.querySelector('.cheese-count .count');
+    const pepperoniBox = document.querySelector('.inventory-box.inventory-pepperoni');
+    const pepperoniCountEl = document.querySelector('.pepperoni-count .count');
 
     const shopMoneyDisplay = document.querySelector('.shop-money-amount');
     const inventoryItems = document.querySelectorAll('.inventory-item');
@@ -102,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (count > 0 && !currentPizza.dough) {
             currentPizza.dough = true;
-            doughCountEl.textContent = count - 1;
+            inventory.dough--;
+            doughCountEl.textContent = inventory.dough;
 
             const pizzaDisplay = document.querySelector('.pizza.pizza-1');
             if (pizzaDisplay) {
@@ -113,7 +120,76 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    inventory.dough--;
+    sauceBox.addEventListener('click', () => {
+        const count = inventory.sauce;
+
+        if (currentPizza.dough && count > 0 && !currentPizza.sauce) {
+            currentPizza.sauce = true;
+            inventory.sauce--;
+            sauceCountEl.textContent = inventory.sauce;
+
+            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
+            if (pizzaDisplay) {
+                const sauceLayer = document.createElement('div');
+                sauceLayer.className = 'pizza-sauce-layer';
+                pizzaDisplay.appendChild(sauceLayer);
+            }
+        } else if (!currentPizza.dough) {
+            alert("You need to add dough first!");
+        } else if (count === 0) {
+            alert("No more sauce in inventory!");
+        }
+    });
+
+    cheeseBox.addEventListener('click', () => {
+        const count = inventory.cheese;
+
+        if (count > 0 && currentPizza.dough && !currentPizza.cheese) {
+            currentPizza.cheese = true;
+            inventory.cheese--;
+            cheeseCountEl.textContent = inventory.cheese;
+
+            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
+            if (pizzaDisplay) {
+                const cheeseLayer = document.createElement('div');
+                cheeseLayer.classList.add('pizza-cheese-layer');
+                pizzaDisplay.appendChild(cheeseLayer);
+            }
+        } else if (count === 0) {
+            alert("No more cheese in inventory!");
+        } else if (!currentPizza.dough) {
+            alert("Add dough first!");
+        }
+    });
+
+    pepperoniBox.addEventListener('click', () => {
+        const count = inventory.pepperoni;
+
+        if (count > 0 && currentPizza.dough && currentPizza.cheese && !currentPizza.pepperoni) {
+            currentPizza.pepperoni = true;
+            inventory.pepperoni--;
+            pepperoniCountEl.textContent = inventory.pepperoni;
+
+            const pizzaDisplay = document.querySelector('.pizza.pizza-1');
+            if (pizzaDisplay) {
+                const pepperoniLayer = document.createElement('div');
+                pepperoniLayer.classList.add('pizza-pepperoni-layer');
+                pizzaDisplay.appendChild(pepperoniLayer);
+            }
+        } else if (count === 0) {
+            alert("No more pepperoni in inventory!");
+        } else if (!currentPizza.cheese) {
+            alert("Add cheese first!");
+        } else if (!currentPizza.dough) {
+            alert("Add dough first!");
+        }
+    });
+
+    document.getElementById('done-button').addEventListener('click', function () {
+      document.getElementById('pizza-making-scene').style.display = 'none';
+      document.querySelector('.restaurant-scene').style.display = 'block';
+    });
+
     updateInventoryUI();
     updateMoneyUI();
 });
