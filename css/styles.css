@@ -12,13 +12,14 @@ body {
   padding: 0;
 }
 
-.starting-page, .settings-page, .language-page, .restart-page, .game-page {
+.starting-page, .settings-page, .language-page, .restart-page, .game-page, .pizza-making-scene {
   position: relative;
   width: 100%;
   height: 100vh;
   background: var(--bg-color);
   font-family: 'Irish Grover', sans-serif;
-}
+
+.pizza-making-scene, .dough, .sauce, .cheese, .pepperoni {display: none;}
 
 .pizza-group {
   position: absolute;
@@ -393,20 +394,6 @@ body {
   color: var(--text-color);
 }
 
-@media screen and (max-width: 768px) {
-  .pizza {
-    width: 80%;
-    height: auto;
-  }
-  .button {
-    width: 70%;
-    font-size: 48px;
-  }
-  .settings-container {
-    width: 100%;
-  }
-}
-
 .title-main {
   position: absolute;
   width: 972px;
@@ -435,9 +422,7 @@ body {
   left: 760px;
 }
 
-.button.new-game,
-.button.continue-game,
-.button.progress {
+.button.new-game, .button.continue-game, .button.progress {
   width: 656px;
   height: 109px;
   border-radius: 49px;
@@ -609,27 +594,6 @@ body {
   top: 75px;
   background: #CCA580;
   border-radius: 22px;
-}
-
-.help-page .back-button {
-  position: absolute;
-  width: 95px;
-  height: 91px;
-  left: 130px;
-  top: 98px;
-  background: #AD8B6A;
-  border-radius: 145px;
-}
-
-.help-page .back-icon {
-  position: absolute;
-  width: 63.5px;
-  height: 63.5px;
-  left: 79.5px;
-  top: 78.19px;
-  background: url('../images/back.png');
-  background-size: cover;
-  transform: rotate(-179.37deg);
 }
 
 .help-page .header-bar {
@@ -1189,15 +1153,45 @@ body {
     cursor: pointer;
 }
 
-#back-to-restaurant .back-icon {
+#back-to-restaurant .back-icon, .help-page .back-icon {
     position: absolute;
-    width: 90px;
-    height: 90px;
-    top: 14px;
-    left: 17px;
+    width: 63.5px;
+    height: 63.5px;
+    top: 78.19px;
+    left: 79.5px;
     background: url('../images/back.png') no-repeat center center;
     background-size: contain;
     transform: rotate(-179.37deg);
+}
+
+.pizza-making-scene .back-button {
+    position: absolute;
+    width: 95px;
+    height: 91px;
+    left: 30px;
+    top: 10px;
+    background: #AD8B6A;
+    border-radius: 145px;
+}
+
+.help-page .back-button {
+  position: absolute;
+  width: 95px;
+  height: 91px;
+  left: 130px;
+  top: 98px;
+  background: #AD8B6A;
+  border-radius: 145px;
+}
+
+.shop-page .back-button {
+  position: absolute;
+  width: 125px;
+  height: 117px;
+  left: 27px;
+  top: 20px;
+  background: #AD8B6A;
+  border-radius: 145px;
 }
 
 .shop-items {
@@ -1236,8 +1230,7 @@ body {
     color: #000;
 }
 
-.dough-icon, .sauce-icon, .cheese-icon,
-.pepperoni-icon, .olives-icon, .peppers-icon {
+.dough-icon, .sauce-icon, .cheese-icon, .pepperoni-icon, .olives-icon, .peppers-icon {
     position: absolute;
     background-repeat: no-repeat;
     background-position: center;
@@ -1314,24 +1307,6 @@ body {
     font-weight: 700;
     font-size: 32px;
     color: #fff;
-}
-
-.pizza-making-scene {
-    display: none;
-    background: #F4C9A1;
-    width: 1440px;
-    height: 1024px;
-    position: relative;
-}
-
-.pizza-making-scene .back-button {
-    position: absolute;
-    width: 95px;
-    height: 91px;
-    left: 30px;
-    top: 10px;
-    background: #AD8B6A;
-    border-radius: 145px;
 }
 
 .orders-panel {
@@ -2013,4 +1988,20 @@ body {
   color: #000000;
 }
 
-.dough, .sauce, .cheese, .pepperoni { display: none; }
+@media screen and (max-width: 768px) {
+  .pizza {
+    width: 80%;
+    height: auto;
+  }
+  .button {
+    width: 70%;
+    font-size: 48px;
+  }
+  .settings-container {
+    width: 100%;
+  }
+  .shop-page {
+    width: 100%;
+    height:auto;
+  }
+}

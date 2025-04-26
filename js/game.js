@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const mainMenu = document.querySelector(".main-menu");
   const newGameBtn = document.querySelector(".new-game");
   const continueGameBtn = document.querySelector(".continue-game");
   const progressBtn = document.querySelector(".progress");
@@ -16,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const progressExit = document.querySelector(".progress-exit");
 
-  let level = 1;
-  let xp = 0;
+  let level = parseInt(localStorage.getItem('level')) || 1;
+  let xp = parseInt(localStorage.getItem('xp')) || 0;
   const xpToNextLevel = 250;
 
   const xpAmountDisplay = document.querySelector(".xp-amount");
@@ -25,27 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const xpBarFill = document.querySelector(".xp-bar-fill");
   const xpToNextDisplay = document.querySelector(".xp-to-next");
 
-function updateXP() {
+  function saveProgress() {
+    localStorage.setItem('level', level);
+    localStorage.setItem('xp', xp);
+  }
+
+  function updateXP() {
     if (xp >= xpToNextLevel) {
-        level++;
-        xp = 0;
-        xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
-        alert(`Level up! You are now level ${level}`);
+      level++;
+      xp = 0;
+      alert(`Level up! You are now level ${level}`);
+      saveProgress();
     }
 
     xpAmountDisplay.textContent = `${xp}xp / ${xpToNextLevel}xp`;
     xpToNextDisplay.textContent = `${xpToNextLevel - xp} xp til next level`;
     levelDisplay.textContent = `Level ${level}`;
     xpBarFill.style.width = `${(xp / xpToNextLevel) * 100}%`;
-}
+  }
 
-function earnXP(amount) {
-  xp += amount;
-  if (xp > xpToNextLevel) xp = xpToNextLevel;
+  function earnXP(amount) {
+    xp += amount;
+    if (xp >= xpToNextLevel) xp = xpToNextLevel;
+    updateXP();
+    saveProgress();
+  }
+
   updateXP();
-}
-
-updateXP();
 
   progressContainer.style.display = "none";
   helpPage.style.display = "none";
@@ -54,6 +61,7 @@ updateXP();
     introPage.style.display = "block";
     progressContainer.style.display = "none";
     helpPage.style.display = "none";
+    mainMenu.style.display = "none";
   });
 
   introContinueBtn.addEventListener("click", () => {
@@ -62,22 +70,25 @@ updateXP();
   });
 
   michaelBtn.addEventListener("click", () => {
-  window.location.href = "../michael-restaurant.html";
+    window.location.href = "../michael-restaurant.html";
   });
 
   sallyBtn.addEventListener("click", () => {
-  window.location.href = "../sally-restaurant.html";
+    window.location.href = "../sally-restaurant.html";
   });
 
   continueGameBtn.addEventListener("click", () => {
+    alert("Continue Game is coming soon!");
   });
 
   progressBtn.addEventListener("click", () => {
     progressContainer.style.display = "block";
+    mainMenu.style.display = "none";
   });
 
   progressExit.addEventListener("click", () => {
     progressContainer.style.display = "none";
+    mainMenu.style.display = "block";
   });
 
   helpBtn.addEventListener("click", () => {
