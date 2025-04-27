@@ -10,50 +10,17 @@
 <body>
 
 <div class="starting-page">
-
-    <div class="pizza-group pizza1">
-        <div class="pizza-base"></div>
-        <div class="pizza-red-layer"></div>
-        <div class="pizza-orange-layer"></div>
-        <div class="topping" style="left: 967px; top: 971px;"></div>
-        <div class="topping" style="left: 1092px; top: 899px;"></div>
-        <div class="topping" style="left: 967px; top: 1105px;"></div>
-        <div class="topping" style="left: 1092px; top: 1157px;"></div>
-        <div class="topping" style="left: 1217px; top: 964px;"></div>
-        <div class="topping" style="left: 1217px; top: 1105px;"></div>
-        <div class="topping" style="left: 1092px; top: 1021px;"></div>
-    </div>
-
-    <div class="pizza-group pizza2">
-        <div class="pizza-base"></div>
-        <div class="pizza-red-layer"></div>
-        <div class="pizza-orange-layer"></div>
-        <div class="topping" style="left: 838px; top: -108px;"></div>
-        <div class="topping" style="left: 963px; top: -180px;"></div>
-        <div class="topping" style="left: 838px; top: 26px;"></div>
-        <div class="topping" style="left: 963px; top: 78px;"></div>
-        <div class="topping" style="left: 1088px; top: -115px;"></div>
-        <div class="topping" style="left: 1088px; top: 26px;"></div>
-        <div class="topping" style="left: 963px; top: -58px;"></div>
-    </div>
-
-    <div class="pizza-group pizza3">
-        <div class="pizza-base"></div>
-        <div class="pizza-red-layer"></div>
-        <div class="pizza-orange-layer"></div>
-        <div class="topping" style="left: 43px; top: 665px;"></div>
-        <div class="topping" style="left: 168px; top: 593px;"></div>
-        <div class="topping" style="left: 43px; top: 799px;"></div>
-        <div class="topping" style="left: 168px; top: 851px;"></div>
-        <div class="topping" style="left: 293px; top: 658px;"></div>
-        <div class="topping" style="left: 293px; top: 799px;"></div>
-        <div class="topping" style="left: 168px; top: 715px;"></div>
-    </div>
+    <img src="images/logo.png" alt="Tibbles Pizzeria Logo" class="logo">
 
     <div class="title">TIBBLES PIZZERIA</div>
 
+    <img src="images/pizza1.png" class="pizza pizza1" alt="Pizza 1">
+    <img src="images/pizza2.png" class="pizza pizza2" alt="Pizza 2">
+    <img src="images/pizza3.png" class="pizza pizza3" alt="Pizza 3">
+
     <div class="button btn-play" id="play-game">Play</div>
     <div class="button btn-settings" id="settings">Settings</div>
+
 </div>
 
 <div class="settings-page" id="settings-page" style="display: none;">
@@ -63,7 +30,7 @@
         <div class="settings-header-bar"></div>
         <div class="settings-title">Settings</div>
 
-        <div class="exit-button" id="exit-settings">
+        <div class="exit-button" id="exit-language">
             <div class="exit-line1"></div>
             <div class="exit-line2"></div>
         </div>
@@ -88,28 +55,36 @@
     </div>
 </div>
 
-<div class="language-page" style="display: none;">
-    <div class="language-button en"></div>
-    <div class="language-label en">ENGLISH</div>
+<div class="language-page" id="language-page" style="display: none;">
 
-    <div class="language-button fr"></div>
-    <div class="language-label fr">FRENCH</div>
+    <div class="language-container">
+        <div class="language-bg"></div>
 
-    <div class="language-button it"></div>
-    <div class="language-label it">ITALIAN</div>
+        <div class="language-header-bar"></div>
+        <div class="language-title">Languages</div>
 
-    <div class="language-button es"></div>
-    <div class="language-label es">SPANISH</div>
+        <div class="exit-button" id="exit-settings">
+            <div class="exit-line1"></div>
+            <div class="exit-line2"></div>
+        </div>
 
-    <div class="language-button de"></div>
-    <div class="language-label de">GERMAN</div>
+        <div class="language-button en"></div>
+        <div class="language-label en">ENGLISH</div>
 
-    <div class="language-button pt"></div>
-    <div class="language-label pt">PORTUGUESE</div>
+        <div class="language-button fr"></div>
+        <div class="language-label fr">FRENCH</div>
 
-    <div class="exit-button" id="exit-language">
-        <div class="exit-line1"></div>
-        <div class="exit-line2"></div>
+        <div class="language-button it"></div>
+        <div class="language-label it">ITALIAN</div>
+
+        <div class="language-button es"></div>
+        <div class="language-label es">SPANISH</div>
+
+        <div class="language-button de"></div>
+        <div class="language-label de">GERMAN</div>
+
+        <div class="language-button pt"></div>
+        <div class="language-label pt">PORTUGUESE</div>
     </div>
 </div>
 
