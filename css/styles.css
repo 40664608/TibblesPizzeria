@@ -192,22 +192,22 @@ display: none;
 
 .restart-header-bar {
   position: absolute;
-  width: 1145px;
+  width: 1300px;
   height: 185px;
-  left: 74px;
-  top: 67px;
+  left: 147px;
+  top: 100px;
   background: var(--panel-color);
   border-radius: 27px;
 }
 
 .restart-text {
   position: absolute;
-  width: 1094px;
-  height: 295px;
-  left: 153px;
-  top: 121px;
+  width: 1300px;
+  height: 185px;
+  left: 870px;
+  top: 150px;
   transform: translateX(-50%);
-  font-size: 64px;
+  font-size: 75px;
   line-height: 77px;
   color: var(--text-color);
 }
@@ -221,54 +221,60 @@ display: none;
   cursor: pointer;
 }
 
-.yes-button {
-  left: 294px;
-  top: 430px;
+.restart-square-button {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  background: var(--panel-color);
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.yes-icon {
-  position: absolute;
-  width: 241px;
-  height: 241px;
-  left: 13px;
-  top: 13px;
-  background: url('../images/yes.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+.yes-button {
+  left: 350px;
+  top: 350px;
 }
 
 .no-button {
-  left: 863px;
-  top: 430px;
+  left: 830px;
+  top: 350px;
+}
+
+.yes-icon, .no-icon {
+  width: 80%;
+  height: 80%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.yes-icon {
+  background-image: url('../images/yes.png');
 }
 
 .no-icon {
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  left: 29px;
-  top: 29px;
-  background: url('../images/no.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url('../images/no.png');
 }
 
 .label {
   position: absolute;
   font-size: 64px;
-  color: #000;
+  color: var(--text-color);
   width: 190px;
-  height: 89px;
+  text-align: center;
 }
 
 .yes-label {
-  left: 358px;
-  top: 739px;
+  left: 380px;
+  top: 650px;
 }
 
 .no-label {
-  left: 941px;
-  top: 739px;
+  left: 860px;
+  top: 650px;
 }
 
 .exit-button {
@@ -407,6 +413,7 @@ display: none;
   font-size: 64px;
   color: var(--text-color);
   position: absolute;
+  pointer-events: none;
 }
 
 .language-label.en { left: 370px; top: 295px; }
@@ -2053,6 +2060,62 @@ display: none;
 
   .restart-button {
     top: 500px;
+  }
+
+  .language-button.en { left: 250px; top: 285px; width: 30%; }
+  .language-button.fr { left: 550px; top: 285px; width: 30%; }
+  .language-button.it { left: 250px; top: 478px; width: 30%; }
+  .language-button.es { left: 550px; top: 478px; width: 30%; }
+  .language-button.de { left: 250px; top: 671px; width: 30%; }
+  .language-button.pt { left: 550px; top: 671px; width: 30%; }
+
+  .language-label.en { left: 170px; top: 305px; font-size: 37px; }
+  .language-label.fr { left: 480px; top: 305px; font-size: 37px; }
+  .language-label.it { left: 170px; top: 500px; font-size: 37px; }
+  .language-label.es { left: 480px; top: 500px; font-size: 37px; }
+  .language-label.de { left: 170px; top: 690px; font-size: 37px; }
+  .language-label.pt { left: 440px; top: 690px; font-size: 37px; }
+
+  .restart-header-bar {
+    width: 80%;
+    height: 20%;
+    left: 100px;
+  }
+
+  .restart-text {
+    font-size: 38px;
+    left: 770px;
+  }
+
+  .restart-square-button {
+    width: 30%;
+    height: 30%;
+  }
+
+  .yes-button {
+    left: 160px;
+    top: 350px;
+  }
+
+  .no-button {
+    left: 460px;
+    top: 350px;
+  }
+
+  .yes-icon, .no-icon {
+    width: 70%;
+    height: 70%;
+  }
+
+  .yes-label {
+    left: 180px;
+    top: 615px;
+  }
+
+  .no-label {
+    left: 480px;
+    top: 615px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2106,110 +2169,60 @@ display: none;
 
   .restart-button {
     top: 500px;
-}
-
-@media (max-width: 600px) {
-  .pizza {
-    width: 150px;
   }
 
-  .btn-play, .btn-settings {
-    font-size: 8vw;
+  .language-button.en { left: 250px; top: 285px; width: 30%; }
+  .language-button.fr { left: 550px; top: 285px; width: 30%; }
+  .language-button.it { left: 250px; top: 478px; width: 30%; }
+  .language-button.es { left: 550px; top: 478px; width: 30%; }
+  .language-button.de { left: 250px; top: 671px; width: 30%; }
+  .language-button.pt { left: 550px; top: 671px; width: 30%; }
+
+  .language-label.en { left: 170px; top: 305px; font-size: 37px; }
+  .language-label.fr { left: 480px; top: 305px; font-size: 37px; }
+  .language-label.it { left: 170px; top: 500px; font-size: 37px; }
+  .language-label.es { left: 480px; top: 500px; font-size: 37px; }
+  .language-label.de { left: 170px; top: 690px; font-size: 37px; }
+  .language-label.pt { left: 440px; top: 690px; font-size: 37px; }
+
+  .restart-header-bar {
+    width: 80%;
+    height: 20%;
+    left: 100px;
   }
 
-  .settings-container {
-    width: 95%;
-    height: 90%;
+  .restart-text {
+    font-size: 38px;
+    left: 770px;
   }
 
-  .settings-title {
-    font-size: 36px;
-    left: 50%;
-    transform: translateX(-50%)
+  .restart-square-button {
+    width: 30%;
+    height: 30%;
   }
 
-  .icon-button {
-    width: 100px;
-    height: 100px;
+  .yes-button {
+    left: 160px;
+    top: 350px;
   }
 
-  .music-wrapper {
-    left: 150px;
-    top: 150px;
+  .no-button {
+    left: 460px;
+    top: 350px;
   }
 
-  .sound-wrapper {
-    left: 400px;
-    top: 150px;
+  .yes-icon, .no-icon {
+    width: 70%;
+    height: 70%;
   }
 
-  .alert-wrapper {
-    left: 650px;
-    top: 150px;
+  .yes-label {
+    left: 180px;
+    top: 615px;
   }
 
-  .language-button, .restart-button {
-    width: 90%;
-    font-size: 42px;
+  .no-label {
+    left: 480px;
+    top: 615px;
   }
-
-  .language-button {
-    top: 380px;
-  }
-
-  .restart-button {
-    top: 500px;
-}
-
-@media (max-width: 480px) {
-  .pizza {
-    width: 130px;
-  }
-
-  .btn-play, .btn-settings {
-    font-size: 10vw;
-  }
-
-  .settings-container {
-    width: 100%;
-    height: 95%;
-  }
-
-  .settings-title {
-    font-size: 32px;
-    left: 50%;
-    transform: translateX(-50%)
-  }
-
-  .icon-button {
-    width: 80px;
-    height: 80px;
-  }
-
-  .music-wrapper {
-    left: 150px;
-    top: 150px;
-  }
-
-  .sound-wrapper {
-    left: 400px;
-    top: 150px;
-  }
-
-  .alert-wrapper {
-    left: 650px;
-    top: 150px;
-  }
-
-  .language-button, .restart-button {
-    width: 95%;
-    font-size: 36px;
-  }
-
-  .language-button {
-      top: 380px;
-    }
-
-  .restart-button {
-       top: 500px;
 }
