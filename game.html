@@ -8,25 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 </head>
 <body class="game-page">
-<div class="title-main">TIBBLES PIZZERIA</div>
 
-<div class="main-menu">
-<div class="button new-game">New Game</div>
-<div class="button continue-game">Continue Game</div>
-<div class="button progress">Progress</div>
+<div class="menu-page">
+  <div class="title-main">TIBBLES PIZZERIA</div>
+  <div class="main-menu">
+    <div class="button new-game">New Game</div>
+    <div class="button continue-game">Continue Game</div>
+    <div class="button progress">Progress</div>
+  </div>
+  <img src="images/pizza1.png" class="pizza pizza1" alt="Pizza 1">
+  <img src="images/pizza2.png" class="pizza pizza2" alt="Pizza 2">
+  <img src="images/pizza3.png" class="pizza pizza3" alt="Pizza 3">
 </div>
 
-<img src="images/pizza1.png" class="pizza pizza1" alt="Pizza 1">
-<img src="images/pizza2.png" class="pizza pizza2" alt="Pizza 2">
-<img src="images/pizza3.png" class="pizza pizza3" alt="Pizza 3">
-
 <div class="intro-page" style="display: none;">
-    <div class="intro-background"></div>
-
-    <div class="intro-rectangle1"></div>
-    <div class="intro-rectangle2"></div>
+  <div class="intro-container">
+    <div class="intro-bg"></div>
+    <div class="intro-header-bar"></div>
     <div class="intro-title">Instructions</div>
-    <div class="intro-description">
+
+    <div class="intro-text">
         Step into the fast-paced world of Tibbles Pizzeria, where
         customer satisfaction is key! Take on the role of a
         restaurant manager, serving hungry customers and
@@ -42,6 +43,7 @@
     <div class="continue-button" id="intro-continue">
         <div class="continue-text">Continue</div>
     </div>
+  </div>
 </div>
 
 <div class="character-page" style="display: none;">
@@ -62,7 +64,8 @@
     </div>
 </div>
 
-<div class="progress-container" style="display: none;">
+<div class="progress-page" style="display: none;">
+    <div class="progress-container"></div>
     <div class="progress-bg"></div>
     <div class="progress-header-bar"></div>
     <div class="progress-title">Progress Page</div>
@@ -77,7 +80,7 @@
     <div class="xp-to-next">250 xp til next level</div>
 
     <div class="help-button"></div>
-    <div class="help-bg"></div>
+    <div class="help-box"></div>
     <div class="help-icon"></div>
 
     <div class="exit-button progress-exit">
@@ -87,15 +90,12 @@
 </div>
 
 <div class="help-page" style="display:none;">
-
-    <div class="main-container"></div>
-
+    <div class="help-container"></div>
+    <div class="help-bg"></div>
     <div class="back-button"></div>
     <div class="back-icon"></div>
-
-    <div class="header-bar"></div>
+    <div class="help-header-bar"></div>
     <div class="help-title">Help Page</div>
-
     <div class="help-text">
         How to earn XP?
         To earn XP, focus on making high-quality pizzas and ensuring customer orders are accurate.
@@ -105,6 +105,8 @@
     </div>
 
 </div>
+
+<audio id="button-sound" src="sounds/Button.wav"></audio>
 
 <script src="js/game.js"></script>
 </body>

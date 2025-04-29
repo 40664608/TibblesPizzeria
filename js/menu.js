@@ -11,7 +11,9 @@ const alertButton = document.querySelector('.alert-wrapper');
 
 document.getElementById('play-game').addEventListener('click', () => {
     playButtonSound();
+    setTimeout(() => {
     window.location.href = 'game.html';
+    }, 300);
 });
 
 document.getElementById('settings').addEventListener('click', () => {
@@ -106,16 +108,13 @@ function playButtonSound() {
 }
 
 musicButton.addEventListener('click', () => {
-    if (backgroundMusic.paused) {
-        backgroundMusic.play();
-    } else {
-        backgroundMusic.pause();
-    }
+    playButtonSound();
 });
 
 let volumeLevel = 1;
 
 soundButton.addEventListener('click', () => {
+    playButtonSound();
     if (volumeLevel === 1) {
         volumeLevel = 0.5;
     } else if (volumeLevel === 0.5) {
@@ -123,7 +122,8 @@ soundButton.addEventListener('click', () => {
     } else {
         volumeLevel = 1;
     }
-    backgroundMusic.volume = volumeLevel;
+    buttonSound.volume = volumeLevel;
+    alertSound.volume = volumeLevel;
 });
 
 alertButton.addEventListener('click', () => {

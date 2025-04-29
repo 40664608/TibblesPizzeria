@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const mainMenu = document.querySelector(".main-menu");
+  const menuPage = document.querySelector(".menu-page");
   const newGameBtn = document.querySelector(".new-game");
   const continueGameBtn = document.querySelector(".continue-game");
   const progressBtn = document.querySelector(".progress");
+  const buttonSound = document.getElementById('button-sound');
 
   const progressContainer = document.querySelector(".progress-container");
   const helpPage = document.querySelector(".help-page");
@@ -25,6 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const levelDisplay = document.querySelector(".level-display");
   const xpBarFill = document.querySelector(".xp-bar-fill");
   const xpToNextDisplay = document.querySelector(".xp-to-next");
+
+  function playButtonSound() {
+      if (buttonSound) {
+          buttonSound.currentTime = 0;
+          buttonSound.play();
+      }
+  }
 
   function saveProgress() {
     localStorage.setItem('level', level);
@@ -58,44 +67,57 @@ document.addEventListener("DOMContentLoaded", () => {
   helpPage.style.display = "none";
 
   newGameBtn.addEventListener("click", () => {
+    playButtonSound();
     introPage.style.display = "block";
     progressContainer.style.display = "none";
     helpPage.style.display = "none";
-    mainMenu.style.display = "none";
+    menuPage.style.display = "none";
   });
 
   introContinueBtn.addEventListener("click", () => {
+    playButtonSound();
     introPage.style.display = "none";
     characterPage.style.display = "block";
   });
 
   michaelBtn.addEventListener("click", () => {
+    playButtonSound();
+    setTimeout(() => {
     window.location.href = "../michael-restaurant.html";
+    }, 300);
   });
 
   sallyBtn.addEventListener("click", () => {
+    playButtonSound();
+    setTimeout(() => {
     window.location.href = "../sally-restaurant.html";
+    }, 300);
   });
 
   continueGameBtn.addEventListener("click", () => {
+    playButtonSound();
     alert("Continue Game is coming soon!");
   });
 
   progressBtn.addEventListener("click", () => {
+    playButtonSound();
     progressContainer.style.display = "block";
     mainMenu.style.display = "none";
   });
 
   progressExit.addEventListener("click", () => {
+    playButtonSound();
     progressContainer.style.display = "none";
     mainMenu.style.display = "block";
   });
 
   helpBtn.addEventListener("click", () => {
+    playButtonSound();
     helpPage.style.display = "block";
   });
 
   backBtn.addEventListener("click", () => {
+    playButtonSound();
     helpPage.style.display = "none";
   });
 });

@@ -18,7 +18,7 @@ body, html {
   box-sizing: border-box;
 }
 
-.starting-page, .settings-page, .language-page, .restart-page, .game-page, .pizza-making-scene {
+.starting-page, .settings-page, .language-page, .restart-page, .game-page, .progress-page, .help-page, .intro-page .pizza-making-scene {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,6 +32,7 @@ body, html {
   background: var(--bg-color);
   font-family: 'Irish Grover', cursive;
   overflow: hidden;
+  position: relative;
 }
 
 .pizza-making-scene, .dough, .sauce, .cheese, .pepperoni {
@@ -100,18 +101,24 @@ display: none;
   text-align: center;
   line-height: 90px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-play {
   top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .btn-settings {
   top: 68%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .button {
-  position: absolute;
   width: 300px;
   height: 80px;
   background: var(--accent-orange);
@@ -125,7 +132,7 @@ display: none;
   box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 }
 
-.settings-container, .language-container, .restart-container {
+.settings-container, .language-container, .restart-container, .progress-container, .help-container, .intro-container {
   position: absolute;
   width: 80%;
   height: 90%;
@@ -134,7 +141,7 @@ display: none;
   transform: translate(-50%, -50%);
 }
 
-.settings-bg {
+.settings-bg, .progress-bg, .help-bg, .intro-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -156,7 +163,7 @@ display: none;
   z-index: -1;
 }
 
-.settings-header-bar {
+.settings-header-bar, .progress-header-bar, .help-header-bar, .intro-header-bar {
   position: absolute;
   width: 460px;
   height: 100px;
@@ -178,7 +185,7 @@ display: none;
   border-radius: 27px;
 }
 
-.settings-title, .language-title {
+.settings-title, .language-title, .progress-title, .help-title, .intro-title {
   position: absolute;
   width: 376px;
   height: 68px;
@@ -467,44 +474,6 @@ display: none;
   color: #fff;
 }
 
-.progress-container {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-  background: #F4C9A1;
-}
-
-.progress-bg {
-  position: absolute;
-  width: 1293px;
-  height: 873px;
-  left: 104px;
-  top: 75px;
-  background: #CCA580;
-  border-radius: 22px;
-}
-
-.progress-header-bar {
-  position: absolute;
-  width: 666px;
-  height: 100px;
-  left: 387px;
-  top: 49px;
-  background: #AD8B6A;
-  border-radius: 27px;
-}
-
-.progress-title {
-  position: absolute;
-  width: 506px;
-  height: 68px;
-  left: 498px;
-  top: 65px;
-  font-family: 'Irish Grover';
-  font-size: 64px;
-  color: #000000;
-}
-
 .level-display {
   position: absolute;
   width: 482px;
@@ -585,16 +554,6 @@ display: none;
   top: 74px;
 }
 
-.help-bg {
-  position: absolute;
-  width: 74px;
-  height: 71px;
-  left: 117px;
-  top: 88px;
-  background: #FFFFFF;
-  border-radius: 9px;
-}
-
 .help-icon {
   position: absolute;
   width: 91.83px;
@@ -607,131 +566,38 @@ display: none;
   transform: rotate(0.37deg);
 }
 
-.help-page {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-  background: #F4C9A1;
-}
-
-.help-page .main-container {
-  position: absolute;
-  width: 1293px;
-  height: 873px;
-  left: 104px;
-  top: 75px;
-  background: #CCA580;
-  border-radius: 22px;
-}
-
-.help-page .header-bar {
-  position: absolute;
-  width: 666px;
-  height: 100px;
-  left: 387px;
-  top: 48px;
-  background: #AD8B6A;
-  border-radius: 27px;
-}
-
-.help-page .help-title {
-  position: absolute;
-  width: 506px;
-  height: 68px;
-  left: 587px;
-  top: 64px;
-  font-family: 'Irish Grover', cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 77px;
-  color: #000000;
-}
-
-.help-page .help-text {
-  position: absolute;
-  width: 964px;
-  height: 618px;
-  left: calc(50% - 964px / 2 + 40px);
-  top: 203px;
-  font-family: 'Irish Grover', cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 43px;
-  line-height: 52px;
-  text-align: center;
-  color: #000000;
-}
-
-.intro-page {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-  background: #F4C9A1;
-}
-
-.intro-rectangle1 {
-  position: absolute;
-  width: 1293px;
-  height: 873px;
-  left: 73px;
-  top: 75px;
-  background: #CCA581;
-  border-radius: 22px;
-}
-
-.intro-rectangle2 {
-  position: absolute;
-  width: 460px;
-  height: 100px;
-  left: 490px;
-  top: 50px;
-  background: #AD8B6A;
-  border-radius: 27px;
-}
-
-.intro-title {
-  position: absolute;
-  width: 376px;
-  height: 68px;
-  left: 548px;
-  top: 66px;
-  font-family: 'Irish Grover';
-  font-size: 64px;
-  color: #000000;
-}
-
-.intro-description {
+.intro-text, .help-text {
   position: absolute;
   width: 1182px;
   height: 322px;
-  top: 230px;
-  left: 129px;
-  font-family: 'Irish Grover';
+  top: 150px;
+  left: 15%;
   font-size: 43px;
   text-align: center;
-  color: #000000;
+  color: var(--text-color);
 }
 
 .continue-button {
   position: absolute;
   width: 460px;
   height: 100px;
-  left: 490px;
-  top: 817px;
-  background: #AD8B6A;
-  border-radius: 26px;
-  cursor: pointer;
+  left: 50%;
+  top: 710px;
+  transform: translateX(-50%);
+  background: var(--button-color);
+  border-radius: 27px;
 }
 
 .continue-text {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  line-height: 100px;
-  font-family: 'Irish Grover';
+  position: absolute;
+  width: 376px;
+  height: 68px;
+  left: 65%;
+  top: 18px;
+  transform: translateX(-50%);
   font-size: 64px;
-  color: #1E1E1E;
+  line-height: 77px;
+  color: var(--text-color);
 }
 
 .character-page {
@@ -2014,9 +1880,17 @@ display: none;
     width: 200px;
   }
 
-  .btn-play, .btn-settings {
+  .btn-play, .btn-settings, .button.new-game, .button.continue-game, .button.progress {
     font-size: 6vw;
   }
+
+  .button.new-game, .button.continue-game, .button.progress {
+    width: 45%;
+  }
+
+  .button.new-game { left: 13%;}
+  .button.continue-game { left: 33%;}
+  .button.progress { left: 53%;}
 
   .settings-container {
     width: 90%;
@@ -2027,6 +1901,10 @@ display: none;
     font-size: 48px;
     left: 62%;
     transform: translateX(-50%);
+  }
+
+  .title-main {
+    font-size: 75px;
   }
 
   .icon-button {
@@ -2123,9 +2001,13 @@ display: none;
     width: 180px;
   }
 
-  .btn-play, .btn-settings {
+  .btn-play, .btn-settings, .button.new-game, .button.continue-game, .button.progress {
     font-size: 7vw;
   }
+
+  .button.new-game { left: 13%;}
+  .button.continue-game { left: 33%;}
+  .button.progress { left: 53%;}
 
   .settings-container {
     width: 90%;
@@ -2136,6 +2018,10 @@ display: none;
     font-size: 44px;
     left: 50%;
     transform: translateX(-50%)
+  }
+
+  .title-main {
+    font-size: 75px;
   }
 
   .icon-button {
