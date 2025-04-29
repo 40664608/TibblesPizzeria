@@ -575,31 +575,24 @@ display: none;
   text-align: center;
 }
 
-.help-button {
-  position: absolute;
-  width: 92.42px;
-  height: 92.42px;
-  left: 40px;
-  top: 74px;
-}
-
 .help-box {
   position: absolute;
-  width: 92.42px;
-  height: 92.42px;
-  left: 40px;
-  top: 74px;
+  width: 73px;
+  height: 73px;
+  left: 10px;
+  top: 20px;
   background: white;
-  border-radius: 15px;
+  border-radius: 9px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .help-icon {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background: url('../images/question.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -611,10 +604,19 @@ display: none;
   width: 1182px;
   height: 322px;
   top: 150px;
-  left: 15%;
+  left: 12%;
   font-size: 43px;
   text-align: center;
   color: var(--text-color);
+  font-family: 'Irish Grover';
+}
+
+.help-heading {
+  font-size: 50px;
+}
+
+.help-divider {
+  border: none;
 }
 
 .continue-button {
@@ -1051,44 +1053,26 @@ display: none;
 }
 
 #back-to-restaurant .back-icon, .help-page .back-icon {
-    position: absolute;
     width: 63.5px;
     height: 63.5px;
     top: 78.19px;
     left: 79.5px;
     background: url('../images/back.png') no-repeat center center;
     background-size: contain;
-    transform: rotate(-179.37deg);
 }
 
-.pizza-making-scene .back-button {
-    position: absolute;
-    width: 95px;
-    height: 91px;
-    left: 30px;
-    top: 10px;
-    background: #AD8B6A;
-    border-radius: 145px;
-}
-
-.help-page .back-button {
+.help-page .back-button, .pizza-making-scene .back-button, .shop-page .back-button {
   position: absolute;
-  width: 95px;
-  height: 91px;
-  left: 130px;
-  top: 98px;
-  background: #AD8B6A;
-  border-radius: 145px;
-}
-
-.shop-page .back-button {
-  position: absolute;
-  width: 125px;
-  height: 117px;
-  left: 27px;
+  width: 73px;
+  height: 73px;
+  left: 10px;
   top: 20px;
   background: #AD8B6A;
-  border-radius: 145px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .shop-items {
@@ -1902,7 +1886,7 @@ display: none;
 
   .settings-title {
     font-size: 48px;
-    left: 62%;
+    left: 50%;
     transform: translateX(-50%);
   }
 
@@ -1968,7 +1952,7 @@ display: none;
     left: 770px;
   }
 
-  .intro-text {
+  .intro-text, .help-text {
     width: 70%;
     height: 25%;
     font-size: 28px;
@@ -2010,6 +1994,22 @@ display: none;
 
   .character-title {
     width: 60%;
+    font-size: 48px;
+  }
+
+  .progress-title {
+    width: 50%;
+    font-size: 48px;
+  }
+
+  .level-display {
+    width: 50%;
+    font-size: 48px;
+  }
+
+  .xp-amount {
+    width: 50%;
+    left: 170px;
     font-size: 48px;
   }
 
@@ -2133,7 +2133,7 @@ display: none;
     left: 770px;
   }
 
-  .intro-text {
+  .intro-text, .help-text {
     width: 70%;
     height: 25%;
     font-size: 28px;
@@ -2175,6 +2175,22 @@ display: none;
 
   .character-title {
     width: 60%;
+    font-size: 48px;
+  }
+
+  .progress-title {
+    width: 50%;
+    font-size: 48px;
+  }
+
+  .level-display {
+    width: 50%;
+    font-size: 48px;
+  }
+
+  .xp-amount {
+    width: 50%;
+    left: 170px;
     font-size: 48px;
   }
 
