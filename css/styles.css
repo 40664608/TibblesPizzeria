@@ -18,7 +18,7 @@ body, html {
   box-sizing: border-box;
 }
 
-.starting-page, .settings-page, .language-page, .restart-page, .game-page, .progress-page, .help-page, .intro-page .pizza-making-scene {
+.starting-page, .settings-page, .language-page, .restart-page, .game-page, .help-page, .intro-page, .character-page, .pizza-making-scene {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,6 +33,23 @@ body, html {
   font-family: 'Irish Grover', cursive;
   overflow: hidden;
   position: relative;
+}
+
+.progress-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: var(--bg-color);
+  font-family: 'Irish Grover', cursive;
+  overflow: hidden;
+  position: fixed;
 }
 
 .pizza-making-scene, .dough, .sauce, .cheese, .pepperoni {
@@ -132,7 +149,7 @@ display: none;
   box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 }
 
-.settings-container, .language-container, .restart-container, .progress-container, .help-container, .intro-container {
+.settings-container, .language-container, .restart-container, .help-container, .intro-container, .character-container, .progress-container {
   position: absolute;
   width: 80%;
   height: 90%;
@@ -141,7 +158,7 @@ display: none;
   transform: translate(-50%, -50%);
 }
 
-.settings-bg, .progress-bg, .help-bg, .intro-bg {
+.settings-bg, .help-bg, .intro-bg, .character-bg, .progress-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -163,9 +180,20 @@ display: none;
   z-index: -1;
 }
 
-.settings-header-bar, .progress-header-bar, .help-header-bar, .intro-header-bar {
+.settings-header-bar, .help-header-bar, .intro-header-bar, .progress-header-bar {
   position: absolute;
   width: 460px;
+  height: 100px;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
+  background: var(--button-color);
+  border-radius: 27px;
+}
+
+.character-header-bar {
+  position: absolute;
+  width: 760px;
   height: 100px;
   left: 50%;
   top: -40px;
@@ -185,14 +213,13 @@ display: none;
   border-radius: 27px;
 }
 
-.settings-title, .language-title, .progress-title, .help-title, .intro-title {
+.settings-title, .language-title, .help-title, .intro-title, .character-title, .progress-title {
   position: absolute;
-  width: 376px;
   height: 68px;
-  left: 53%;
+  left: 50%;
   top: -30px;
   transform: translateX(-50%);
-  font-size: 64px;
+  font-size: 60px;
   line-height: 77px;
   color: var(--text-color);
 }
@@ -478,58 +505,59 @@ display: none;
   position: absolute;
   width: 482px;
   height: 94px;
-  left: 571px;
-  top: 360px;
+  left: 38%;
+  top: 100px;
   font-family: 'Irish Grover';
-  font-size: 96px;
-  color: #000000;
+  font-size: 90px;
+  color: var(--text-color);
 }
 
 .xp-box-top {
   position: absolute;
-  width: 977px;
+  width: 80%;
   height: 365px;
-  left: 231px;
-  top: 249px;
-  background: #AD8B6A;
+  left: 10%;
+  top: 200px;
+  background: var(--button-color);
 }
 
 .xp-amount {
   position: absolute;
   width: 482px;
   height: 94px;
-  left: 533px;
-  top: 520px;
+  left: 35%;
+  top: 250px;
   font-family: 'Irish Grover';
-  font-size: 64px;
-  color: #000000;
+  font-size: 60px;
+  color: var(--text-color);
 }
 
 .xp-box-bottom {
   position: absolute;
-  width: 977px;
+  width: 80%;
   height: 170px;
-  left: 231px;
-  top: 680px;
-  background: #AD8B6A;
+  left: 10%;
+  top: 600px;
+  background: var(--button-color);
 }
 
 .xp-bar-bg {
   position: absolute;
-  width: 911px;
-  height: 61px;
-  left: 264px;
-  top: 714px;
+  width: 85%;
+  height: 50px;
+  left: 50%;
+  top: 50px;
   background: #C6C0C0;
   border-radius: 29px;
+  transform: translateX(-50%);
 }
 
 .xp-bar-fill {
   position: absolute;
-  width: 0px;
-  height: 61px;
-  left: 264px;
-  top: 714px;
+  width: 0%;
+  height: 100%;
+  left: 0;
+  top: 0;
   background: #8AC7CE;
   border-radius: 29px;
   transition: width 0.5s ease-in-out;
@@ -537,29 +565,41 @@ display: none;
 
 .xp-to-next {
   position: absolute;
-  width: 482px;
-  height: 94px;
-  left: 510px;
-  top: 788px;
+  width: 100%;
+  left: 50%;
+  top: 120px;
+  transform: translateX(-50%);
   font-family: 'Irish Grover';
-  font-size: 50px;
+  font-size: 30px;
   color: #000000;
+  text-align: center;
 }
 
 .help-button {
   position: absolute;
   width: 92.42px;
   height: 92.42px;
-  left: 108px;
+  left: 40px;
   top: 74px;
+}
+
+.help-box {
+  position: absolute;
+  width: 92.42px;
+  height: 92.42px;
+  left: 40px;
+  top: 74px;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .help-icon {
   position: absolute;
-  width: 91.83px;
-  height: 91.83px;
-  left: 108.59px;
-  top: 74px;
+  width: 60px;
+  height: 60px;
   background: url('../images/question.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -586,6 +626,7 @@ display: none;
   transform: translateX(-50%);
   background: var(--button-color);
   border-radius: 27px;
+  cursor: pointer;
 }
 
 .continue-text {
@@ -600,67 +641,29 @@ display: none;
   color: var(--text-color);
 }
 
-.character-page {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-  background: #F4C9A1;
-}
-
-.char-rectangle1 {
-  position: absolute;
-  width: 1293px;
-  height: 873px;
-  left: 70px;
-  top: 76px;
-  background: #CCA581;
-  border-radius: 22px;
-}
-
-.char-rectangle3 {
-  position: absolute;
-  width: 677px;
-  height: 100px;
-  left: 354px;
-  top: 26px;
-  background: #AD8B6A;
-  border-radius: 27px;
-}
-
-.char-title {
-  position: absolute;
-  width: 779px;
-  height: 68px;
-  left: 411px;
-  top: 42px;
-  font-family: 'Irish Grover';
-  font-size: 64px;
-  color: #000000;
-}
-
-.michael-icon {
+.tibble-icon {
   position: absolute;
   width: 342px;
   height: 575px;
   left: 375px;
-  top: 155px;
-  background-image: url('../images/michael.png');
+  top: 70px;
+  background-image: url('../images/tibble.png');
   background-size: cover;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.michael-button {
+.tibble-button {
   position: absolute;
   width: 312px;
   height: 90px;
   left: 298px;
-  top: 767px;
+  top: 650px;
   background: #AD8B6A;
   border-radius: 26px;
   cursor: pointer;
 }
 
-.michael-text {
+.tibble-text {
   position: relative;
   width: 100%;
   text-align: center;
@@ -672,10 +675,10 @@ display: none;
 
 .sally-icon {
   position: absolute;
-  width: 381px;
-  height: 650px;
+  width: 342px;
+  height: 575px;
   left: 693px;
-  top: 76px;
+  top: 70px;
   background-image: url('../images/sally.png');
   background-size: cover;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -686,7 +689,7 @@ display: none;
   width: 312px;
   height: 90px;
   left: 827px;
-  top: 767px;
+  top: 650px;
   background: #AD8B6A;
   border-radius: 26px;
   cursor: pointer;
@@ -872,7 +875,7 @@ display: none;
   top: 28px;
 }
 
-.staff-sally-bg, .staff-michael-bg {
+.staff-sally-bg, .staff-tibble-bg {
   position: absolute;
   width: 285.18px;
   height: 86.01px;
@@ -882,7 +885,7 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.sally-name, .michael-name {
+.sally-name, .tibble-name {
   position: absolute;
   width: 62.92px;
   height: 21px;
@@ -895,7 +898,7 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.sally-avatar, .michael-avatar {
+.sally-avatar, .tibble-avatar {
   position: absolute;
   width: 63.94px;
   height: 62px;
@@ -906,7 +909,7 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.sally-title, .michael-title {
+.sally-title, .tibble-title {
   position: absolute;
   width: 62.92px;
   height: 21px;
@@ -919,7 +922,7 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.sally-xp, .michael-xp {
+.sally-xp, .tibble-xp {
   position: absolute;
   width: 86.26px;
   height: 21px;
@@ -932,7 +935,7 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.sally-status, .michael-status {
+.sally-status, .tibble-status {
   position: absolute;
   width: 150px;
   height: 21px;
@@ -945,7 +948,7 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.sally-divider, .michael-divider {
+.sally-divider, .tibble-divider {
   position: absolute;
   width: 86.01px;
   height: 0px;
@@ -966,13 +969,13 @@ display: none;
   transform: rotate(-0.05deg);
 }
 
-.michael-face {
+.tibble-face {
   position: absolute;
   width: 42.49px;
   height: 59.19px;
   left: 449.46px;
   top: 242.05px;
-  background: url('../images/michael face.png') no-repeat center center;
+  background: url('../images/tibble face.png') no-repeat center center;
   background-size: cover;
   transform: rotate(-0.05deg);
 }
@@ -1965,6 +1968,12 @@ display: none;
     left: 770px;
   }
 
+  .intro-text {
+    width: 70%;
+    height: 25%;
+    font-size: 28px;
+  }
+
   .restart-square-button {
     width: 30%;
     height: 30%;
@@ -1993,6 +2002,48 @@ display: none;
   .no-label {
     left: 480px;
     top: 615px;
+  }
+
+  .character-header-bar {
+    width: 500px;
+  }
+
+  .character-title {
+    width: 60%;
+    font-size: 48px;
+  }
+
+  .tibble-icon, .sally-icon {
+    width: 50%;
+    top: 40px;
+  }
+
+  .tibble-icon {
+    left: 20%;
+  }
+
+  .sally-icon {
+    left: 35%;
+  }
+
+  .tibble-button, .sally-button {
+    width: 250px;
+    height: 75px;
+    font-size: 42px;
+    top: 620px;
+  }
+
+  .tibble-button {
+    left: 100px;
+  }
+
+  .sally-button {
+    left: 400px;
+  }
+
+  .tibble-text, .sally-text {
+    font-size: 42px;
+    line-height: 75px;
   }
 }
 
@@ -2082,6 +2133,12 @@ display: none;
     left: 770px;
   }
 
+  .intro-text {
+    width: 70%;
+    height: 25%;
+    font-size: 28px;
+  }
+
   .restart-square-button {
     width: 30%;
     height: 30%;
@@ -2110,5 +2167,47 @@ display: none;
   .no-label {
     left: 480px;
     top: 615px;
+  }
+
+  .character-header-bar {
+    width: 500px;
+  }
+
+  .character-title {
+    width: 60%;
+    font-size: 48px;
+  }
+
+  .tibble-icon, .sally-icon {
+    width: 50%;
+    top: 40px;
+  }
+
+  .tibble-icon {
+    left: 20%;
+  }
+
+  .sally-icon {
+    left: 30%;
+  }
+
+  .tibble-button, .sally-button {
+    width: 250px;
+    height: 75px;
+    font-size: 42px;
+    top: 620px;
+  }
+
+  .tibble-button {
+    left: 100px;
+  }
+
+  .sally-button {
+    left: 400px;
+  }
+
+  .tibble-text, .sally-text {
+    font-size: 42px;
+    line-height: 75px;
   }
 }

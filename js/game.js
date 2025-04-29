@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const progressBtn = document.querySelector(".progress");
   const buttonSound = document.getElementById('button-sound');
 
-  const progressContainer = document.querySelector(".progress-container");
+  const progressPage = document.querySelector(".progress-page");
   const helpPage = document.querySelector(".help-page");
   const introPage = document.querySelector(".intro-page");
   const characterPage = document.querySelector(".character-page");
   const introContinueBtn = document.getElementById("intro-continue");
 
-  const michaelBtn = document.querySelector(".michael-button");
+  const tibbleBtn = document.querySelector(".tibble-button");
   const sallyBtn = document.querySelector(".sally-button");
   const helpBtn = document.querySelector(".help-button");
   const backBtn = document.querySelector(".back-button");
@@ -63,13 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateXP();
 
-  progressContainer.style.display = "none";
+  progressPage.style.display = "none";
   helpPage.style.display = "none";
 
   newGameBtn.addEventListener("click", () => {
     playButtonSound();
     introPage.style.display = "block";
-    progressContainer.style.display = "none";
+    progressPage.style.display = "none";
     helpPage.style.display = "none";
     menuPage.style.display = "none";
   });
@@ -80,10 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
     characterPage.style.display = "block";
   });
 
-  michaelBtn.addEventListener("click", () => {
+  tibbleBtn.addEventListener("click", () => {
     playButtonSound();
     setTimeout(() => {
-    window.location.href = "../michael-restaurant.html";
+    window.location.href = "../tibble-restaurant.html";
     }, 300);
   });
 
@@ -96,18 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   continueGameBtn.addEventListener("click", () => {
     playButtonSound();
-    alert("Continue Game is coming soon!");
+    alert("Continue Game is not available right now!");
   });
 
   progressBtn.addEventListener("click", () => {
     playButtonSound();
-    progressContainer.style.display = "block";
+    updateXP();
+    progressPage.style.display = "block";
     mainMenu.style.display = "none";
   });
 
   progressExit.addEventListener("click", () => {
     playButtonSound();
-    progressContainer.style.display = "none";
+    progressPage.style.display = "none";
     mainMenu.style.display = "block";
   });
 
