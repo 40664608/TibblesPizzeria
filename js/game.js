@@ -83,14 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
   tibbleBtn.addEventListener("click", () => {
     playButtonSound();
     setTimeout(() => {
-    window.location.href = "../tibble-restaurant.html";
+    window.location.href = "/TibblesPizzeria/tibble-restaurant.html";
     }, 300);
   });
 
   sallyBtn.addEventListener("click", () => {
     playButtonSound();
     setTimeout(() => {
-    window.location.href = "../sally-restaurant.html";
+    window.location.href = "/TibblesPizzeria/sally-restaurant.html";
     }, 300);
   });
 

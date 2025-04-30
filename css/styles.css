@@ -18,7 +18,7 @@ body, html {
   box-sizing: border-box;
 }
 
-.starting-page, .settings-page, .language-page, .restart-page, .game-page, .help-page, .intro-page, .character-page, .pizza-making-scene {
+.starting-page, .settings-page, .language-page, .restart-page, .game-page, .help-page, .intro-page, .character-page, .restaurant-page, .pizza-making-scene {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -707,20 +707,13 @@ display: none;
   color: #1E1E1E;
 }
 
-.restaurant-scene {
-  position: relative;
-  width: 1440px;
-  height: 1024px;
-  margin: auto;
-}
-
 .top-bar {
   position: absolute;
   top: 11px;
   left: 10px;
-  width: 1420px;
+  width: 99%;
   height: 136px;
-  background: #DDB895;
+  background: var(--panel1-color);
   border: 2px solid #000;
   box-sizing: border-box;
 }
@@ -735,84 +728,92 @@ display: none;
 
 .money {
   top: 19px;
-  left: 127px;
+  left: 130px;
 }
+
 .money-amount {
   position: absolute;
-  left: 140px;
+  left: 120px;
   top: 60px;
   font-family: 'Irish Grover';
   font-size: 53px;
-  color: #000;
+  color: var(--text-color);
 }
+
 .time-label {
-  top: 24px;
-  left: 554px;
+  top: 19px;
+  left: 620px;
 }
+
 .time {
   position: absolute;
-  left: 509px;
+  left: 600px;
   top: 60px;
   font-size: 53px;
-  color: #000;
+  color: var(--text-color);
 }
+
 .day-label {
-  top: 21px;
-  left: 916px;
+  top: 19px;
+  left: 1130px;
 }
+
 .day {
   position: absolute;
-  left: 932px;
+  left: 1150px;
   top: 60px;
   font-size: 53px;
-  color: #000;
+  color: var(--text-color);
 }
 
 .shop-icon, .menu-icon {
   position: absolute;
   width: 125px;
   height: 117px;
+  cursor: pointer;
 }
+
 .shop-icon {
-  left: 1171px;
-  top: 21px;
+  left: 1640px;
+  top: 10px;
 }
+
 .menu-icon {
-  left: 1301px;
-  top: 19px;
+  left: 1770px;
+  top: 10px;
 }
+
 .circle {
   width: 125px;
   height: 117px;
-  background: #AD8B6A;
+  background: var(--button-color);
   border-radius: 145px;
 }
+
 .shop-image, .menu-image {
   position: absolute;
-  width: 110px;
-  height: 110px;
-  left: 6px;
-  top: 0px;
+  width: 100px;
+  height: 100px;
+  left: 12px;
+  top: 5px;
   background-size: contain;
   background-repeat: no-repeat;
 }
+
 .shop-image {
   background-image: url('../images/shop.png');
 }
+
 .menu-image {
-  width: 81.55px;
-  height: 81.55px;
-  left: 21.47px;
-  top: 22.17px;
   background-image: url('../images/menu.png');
 }
 
 .customers, .staff, .inventory, .pizzas {
   position: absolute;
-  background: #DDB895;
+  background: var(--panel1-color);
   border: 2px solid black;
-  height: 793px;
-  width: 334px;
+  height: 635px;
+  width: 400px;
   padding: 20px;
 }
 .customers {
@@ -820,134 +821,82 @@ display: none;
   top: 220px;
 }
 .staff {
-  left: 415px;
+  left: 500px;
   top: 220px;
 }
 .pizzas {
-  left: 749px;
+  left: 980px;
   top: 220px;
 }
 .inventory {
-  left: 1083px;
+  left: 1460px;
   top: 220px;
 }
 
 .customers h2, .staff h2, .inventory h2, .pizzas h2 {
   font-family: 'Irish Grover';
   font-size: 50px;
-  margin: -60px 0 10px 0;
+  margin: -80px 0 20px 90px;
   text-shadow: 0 4px 4px rgba(0,0,0,0.25);
 }
 
-.inventory-item {
-  background: #AD8B6A;
-  height: 72px;
-  margin: 20px 0;
-  padding: 10px 20px;
-  font-size: 32px;
+.peter-container, .jim-container {
   position: relative;
-}
-.inventory-item .count {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  font-weight: bold;
-  font-size: 36px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+  background: var(--button-color);
 }
 
-.plus-button {
-  position: absolute;
-  top: 269px;
-  left: 887px;
-  width: 57px;
-  height: 57px;
-}
-.horizontal, .vertical {
-  position: absolute;
-  background: black;
-  height: 7px;
-  width: 57px;
-}
-.vertical {
-  transform: rotate(90deg);
-  top: 28px;
-  left: 0;
-}
-.horizontal {
-  top: 28px;
-}
-
-.staff-sally-bg, .staff-tibble-bg {
-  position: absolute;
-  width: 285.18px;
-  height: 86.01px;
-  left: 439.15px;
-  top: 233.28px;
-  background-color: transparent;
-  transform: rotate(-0.05deg);
-}
-
-.sally-name, .tibble-name {
-  position: absolute;
-  width: 62.92px;
-  height: 21px;
-  left: 519.32px;
-  top: 233.2px;
+.peter-name, .jim-name, .status, .waiting-text, .serve-text {
+  font-size: 20px;
+  margin: 5px 0;
   font-family: 'Istok Web';
-  font-size: 25px;
-  line-height: 36px;
-  color: #000000;
-  transform: rotate(-0.05deg);
+  color: var(--text-color);
 }
 
-.sally-avatar, .tibble-avatar {
-  position: absolute;
-  width: 63.94px;
-  height: 62px;
-  left: 439.16px;
-  top: 245.28px;
-  background: #000000;
+.staff-tibble, staff-sally {
+  width: 100%;
+  padding: 10px;
+  background: var(--button-color);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tibble-avatar, sally-avatar {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  background: black;
+  flex-shrink: 0;
+}
+
+.tibble-face, .sally-face {
+  position: absolute;
+  width: 42.49px;
+  height: 59.19px;
+  left: 449.46px;
+  top: 242.05px;
+  background-size: cover;
   transform: rotate(-0.05deg);
 }
 
-.sally-title, .tibble-title {
-  position: absolute;
-  width: 62.92px;
-  height: 21px;
-  left: 520.36px;
-  top: 261.2px;
-  font-family: 'Istok Web';
-  font-size: 15px;
-  line-height: 22px;
-  color: #000000;
-  transform: rotate(-0.05deg);
+.tibble-face { background: url('../images/tibble face.png') no-repeat center center; }
+.sally-face { background: url('../images/sally face.png') no-repeat center center; }
+
+.staff-tibble-bg, .staff-sally-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.sally-xp, .tibble-xp {
-  position: absolute;
-  width: 86.26px;
-  height: 21px;
-  left: 520.38px;
-  top: 282.2px;
+.tibble-name, .tibble-title, .tibble-xp, .tibble-status, .sally-name, .sally-title, .sally-xp, .sally-status {
+  font-size: 16px;
+  margin: 2px 0;
+  color: var(--text-color);
   font-family: 'Istok Web';
-  font-size: 15px;
-  line-height: 22px;
-  color: #000000;
-  transform: rotate(-0.05deg);
-}
-
-.sally-status, .tibble-status {
-  position: absolute;
-  width: 150px;
-  height: 21px;
-  left: 638.08px;
-  top: 250.09px;
-  font-family: 'Istok Web';
-  font-size: 15px;
-  line-height: 22px;
-  color: #000000;
-  transform: rotate(-0.05deg);
 }
 
 .sally-divider, .tibble-divider {
@@ -960,27 +909,73 @@ display: none;
   transform: rotate(89.95deg);
 }
 
-.sally-face {
-  position: absolute;
-  width: 42.49px;
-  height: 59.19px;
-  left: 449.46px;
-  top: 242.05px;
-  background: url('../images/sally face.png') no-repeat center center;
-  background-size: cover;
-  transform: rotate(-0.05deg);
+.pizza-container {
+  width: 100%;
+  background: var(--button-color);
+  padding: 10px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.tibble-face {
-  position: absolute;
-  width: 42.49px;
-  height: 59.19px;
-  left: 449.46px;
-  top: 242.05px;
-  background: url('../images/tibble face.png') no-repeat center center;
-  background-size: cover;
-  transform: rotate(-0.05deg);
+.pizza-label, .pepperoni-pizza-text, .dough-cheese-pepperoni, .cooking-text {
+  text-align: center;
+  margin: 5px 0;
+  font-size: 18px;
+  color: var(--text-color);
+  font-family: 'Irish Grover';
 }
+
+.plus-button {
+  width: 57px;
+  height: 57px;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.plus-button .horizontal, .plus-button .vertical {
+  position: absolute;
+  background: black;
+  height: 7px;
+  width: 57px;
+  top: 25px;
+  left: 0;
+}
+
+.plus-button .vertical {
+  transform: rotate(90deg);
+}
+
+.inventory-item {
+  background: var(--button-color);
+  height: 72px;
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 32px;
+  position: relative;
+  width: 100%;
+}
+
+.inventory-item .count {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.pizza-1, .pizza-2, .pizza-3, .pizza-4 {
+  background: url('../images/pizza1.png') no-repeat center center;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pizza-1 { top: 100px; left: 300px; }
+.pizza-2 { top: 400px; left: 700px; }
+.pizza-3 { top: 200px; left: 1200px; }
+.pizza-4 { top: 500px; left: 1600px; }
 
 .back-home-button {
   position: absolute;
@@ -1432,36 +1427,6 @@ display: none;
   top: 347px;
 }
 
-.peter-container {
-  position: absolute;
-  width: 320px;
-  height: 111px;
-  left: 45px;
-  top: 256px;
-}
-
-.peter-background {
-  position: absolute;
-  width: 302px;
-  height: 70.7px;
-  left: 45px;
-  top: 256px;
-  background: #AD8B6A;
-}
-
-.peter-name {
-  position: absolute;
-  width: 73.49px;
-  height: 20.62px;
-  left: 58px;
-  top: 259.99px;
-  font-family: 'Istok Web';
-  font-weight: 700;
-  font-size: 25px;
-  color: #000000;
-  transform: matrix(1, 0, 0, 1, 0, 0);
-}
-
 .status-bar-red {
   position: absolute;
   width: 88px;
@@ -1489,18 +1454,6 @@ display: none;
   background: #A46E4A;
 }
 
-.waiting-text {
-  position: absolute;
-  width: 101px;
-  height: 15.71px;
-  left: 264px;
-  top: 283.5px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 13px;
-  color: #000000;
-}
-
 .blue-background {
   position: absolute;
   width: 109px;
@@ -1509,18 +1462,6 @@ display: none;
   top: 264.84px;
   background: #54B3C9;
   border-radius: 4px;
-}
-
-.pepperoni-label {
-  position: absolute;
-  width: 125.78px;
-  height: 20.62px;
-  left: 58px;
-  top: 293.43px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 20px;
-  color: #000000;
 }
 
 .red-rectangle {
@@ -1553,49 +1494,6 @@ display: none;
   border-radius: 4px;
 }
 
-.jim-container {
-  position: absolute;
-  width: 328px;
-  height: 156px;
-  left: 45px;
-  top: 260px;
-}
-
-.jim-background {
-  position: absolute;
-  width: 302px;
-  height: 72px;
-  left: 45px;
-  top: 344px;
-  background: #AD8B6A;
-}
-
-.ordering-label {
-  position: absolute;
-  width: 125.78px;
-  height: 21px;
-  left: 56px;
-  top: 381.12px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 20px;
-  color: #000000;
-  transform: rotate(-0.05deg);
-}
-
-.jim-name {
-  position: absolute;
-  width: 62.92px;
-  height: 21px;
-  left: 56px;
-  top: 346.06px;
-  font-family: 'Istok Web';
-  font-weight: 700;
-  font-size: 25px;
-  color: #000000;
-  transform: rotate(-0.05deg);
-}
-
 .gray-rectangle {
   position: absolute;
   width: 88px;
@@ -1612,18 +1510,6 @@ display: none;
   left: 245px;
   top: 367px;
   background: #A46E4A;
-}
-
-.serve-text {
-  position: absolute;
-  width: 101px;
-  height: 16px;
-  left: 272px;
-  top: 368px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 13px;
-  color: #000000;
 }
 
 .red-rectangle-2 {
@@ -1646,14 +1532,6 @@ display: none;
   border-radius: 4px;
 }
 
-.pizza-container {
-  position: absolute;
-  width: 334px;
-  height: 853px;
-  left: 749px;
-  top: 160px;
-}
-
 .pizza-background {
   box-sizing: border-box;
   position: absolute;
@@ -1665,20 +1543,6 @@ display: none;
   border: 2px solid #000000;
 }
 
-.pizza-label {
-  position: absolute;
-  width: 151px;
-  height: 60px;
-  left: 841px;
-  top: 160px;
-  font-family: 'Irish Grover';
-  font-weight: 400;
-  font-size: 50px;
-  line-height: 60px;
-  color: #000000;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .rectangle-17 {
   position: absolute;
   width: 297px;
@@ -1686,19 +1550,6 @@ display: none;
   left: 768px;
   top: 255px;
   background: #AD8B6A;
-}
-
-.pepperoni-pizza-text {
-  position: absolute;
-  width: 227px;
-  height: 40px;
-  left: 781px;
-  top: 262px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 40px;
-  color: #000000;
 }
 
 .pizza-slice-8 {
@@ -1834,32 +1685,6 @@ display: none;
   left: 922px;
   top: 326px;
   background: #31C613;
-}
-
-.dough-cheese-pepperoni {
-  position: absolute;
-  width: 130px;
-  height: 72px;
-  left: 936px;
-  top: 363px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-  color: #000000;
-}
-
-.cooking-text {
-  position: absolute;
-  width: 101px;
-  height: 16px;
-  left: 936px;
-  top: 302px;
-  font-family: 'Istok Web';
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-  color: #000000;
 }
 
 @media (max-width: 1200px) {
