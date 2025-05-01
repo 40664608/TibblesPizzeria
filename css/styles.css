@@ -840,89 +840,259 @@ display: none;
   text-shadow: 0 4px 4px rgba(0,0,0,0.25);
 }
 
-.peter-container, .jim-container {
+.main-sections {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: -900px;
+  width: 102%;
+  gap: 20px;
   position: relative;
-  width: 100%;
-  margin-bottom: 30px;
-  padding: 10px;
-  text-align: center;
-  background: var(--button-color);
+  z-index: 1;
 }
 
-.peter-name, .jim-name, .status, .waiting-text, .serve-text {
+.peter-container, .jim-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: var(--button-color);
+  padding: 10px;
+  margin: 10px auto;
+  width: 95%;
+  border-radius: 6px;
+  position: relative;
+  height: auto;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.peter-name, .jim-name {
   font-size: 20px;
-  margin: 5px 0;
+  font-weight: bold;
   font-family: 'Istok Web';
   color: var(--text-color);
 }
 
-.staff-tibble, staff-sally {
-  width: 100%;
-  padding: 10px;
-  background: var(--button-color);
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.status {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-top: 4px;
 }
 
-.tibble-avatar, sally-avatar {
-  width: 60px;
-  height: 60px;
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.blue-rectangle, .blue-rectangle-2 {
+  height: 8px;
+  background: #54B3C9;
+  border-radius: 4px;
+}
+
+.blue-rectangle {width: 60px;}
+.blue-rectangle-2 {width: 20px;}
+
+.red-rectangle, .red-rectangle-2 {
+  height: 8px;
+  background: #FF0000;
+  border-radius: 4px;
+}
+
+.red-rectangle { width: 37px; }
+.red-rectangle-2 { width: 77px; }
+
+.status-bar-green {
+  width: 67px;
+  height: 11px;
+  background: #31C613;
+  border-radius: 4px;
+}
+
+.status-bar-red {
+  width: 30px;
+  height: 11px;
+  background: #FF0000;
+  border-radius: 4px;
+}
+
+.brown-rectangle {
+  width: 100px;
+  height: 18px;
+  background-color: #A46E4A;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gray-rectangle {
+  width: 100px;
+  height: 11px;
+  background-color: #7F6767;
+  border-radius: 4px;
+}
+
+.waiting-text, .serve-text {
+  font-size: 12px;
+  font-family: 'Istok Web';
+  color: var(--text-color);
+}
+
+.staff-tibble, .staff-sally {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 10px;
+  width: 300px;
+  font-family: 'Istok Web', sans-serif;
+  color: black;
+  position: relative;
+  margin: 10px auto;
+  background: var(--button-color);
+}
+
+.tibble-avatar, .sally-avatar {
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  background: black;
+  background-size: cover;
+  background-position: center top;
   flex-shrink: 0;
 }
 
-.tibble-face, .sally-face {
-  position: absolute;
-  width: 42.49px;
-  height: 59.19px;
-  left: 449.46px;
-  top: 242.05px;
-  background-size: cover;
-  transform: rotate(-0.05deg);
-}
+.tibble-avatar { background: black url('../images/tibble face.png') no-repeat center 105%; }
+.sally-avatar { background: black url('../images/sally face.png') no-repeat center 105%; }
 
-.tibble-face { background: url('../images/tibble face.png') no-repeat center center; }
-.sally-face { background: url('../images/sally face.png') no-repeat center center; }
-
-.staff-tibble-bg, .staff-sally-bg {
+.staff-tibble-info, .staff-sally-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-left: 10px;
 }
 
-.tibble-name, .tibble-title, .tibble-xp, .tibble-status, .sally-name, .sally-title, .sally-xp, .sally-status {
-  font-size: 16px;
-  margin: 2px 0;
+.tibble-name, .sally-name {
+  font-size: 18px;
+  font-weight: bold;
   color: var(--text-color);
-  font-family: 'Istok Web';
 }
 
-.sally-divider, .tibble-divider {
-  position: absolute;
-  width: 86.01px;
-  height: 0px;
-  left: 617.26px;
-  top: 233.11px;
-  border: 2px solid #000000;
-  transform: rotate(89.95deg);
+.tibble-title, .tibble-xp, .sally-title, .sally-xp {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.tibble-divider, .sally-divider {
+  width: 2px;
+  height: 50px;
+  background: black;
+  margin: 0 15px;
+}
+
+.tibble-status, .sally-status {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--text-color);
 }
 
 .pizza-container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: var(--button-color);
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 2px;
+  margin: 10px auto;
+  width: 95%;
+  border-radius: 6px;
   position: relative;
+  height: auto;
+  gap: 5px;
 }
 
-.pizza-label, .pepperoni-pizza-text, .dough-cheese-pepperoni, .cooking-text {
-  text-align: center;
-  margin: 5px 0;
-  font-size: 18px;
+.pizza-name {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Istok Web';
   color: var(--text-color);
-  font-family: 'Irish Grover';
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.pizza-status {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.pizza-status .brown-rectangle {
+  width: 100%;
+  height: 22px;
+  background-color: #A46E4A;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.status-text {
+  font-size: 14px;
+  font-family: 'Istok Web';
+  color: var(--text-color);
+}
+
+.status-bars {
+  display: flex;
+  width: 100%;
+  gap: 2px;
+  margin-bottom: 5px;
+}
+
+.pizza-status-bar-green {
+  height: 30px;
+  background: #31C613;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.pizza-status-bar-red {
+  height: 30px;
+  background: #FF0000;
+  border-radius: 4px;
+  width: 30%;
+}
+
+.ingredients-container {
+  width: 100%;
+  background-color: #A46E4A;
+  border-radius: 4px;
+  padding: 8px 0;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.ingredient {
+  font-size: 14px;
+  font-family: 'Istok Web';
+  color: var(--text-color);
+  width: 90%;
+  text-align: center;
+  padding: 2px 0;
 }
 
 .plus-button {
@@ -946,36 +1116,35 @@ display: none;
   transform: rotate(90deg);
 }
 
+.inventory-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
 .inventory-item {
   background: var(--button-color);
-  height: 72px;
-  margin: 10px 0;
-  padding: 10px 20px;
-  font-size: 32px;
-  position: relative;
-  width: 100%;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Istok Web';
+  color: var(--text-color);
 }
 
-.inventory-item .count {
-  position: absolute;
-  right: 20px;
-  top: 10px;
+.item-name {
+  font-size: 20px;
+}
+
+.item-count {
+  font-size: 20px;
   font-weight: bold;
-  font-size: 36px;
+  background-color: rgba(0,0,0,0.2);
+  padding: 2px 8px;
+  border-radius: 10px;
 }
-
-.pizza-1, .pizza-2, .pizza-3, .pizza-4 {
-  background: url('../images/pizza1.png') no-repeat center center;
-  background-size: cover;
-  opacity: 0.1;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.pizza-1 { top: 100px; left: 300px; }
-.pizza-2 { top: 400px; left: 700px; }
-.pizza-3 { top: 200px; left: 1200px; }
-.pizza-4 { top: 500px; left: 1600px; }
 
 .back-home-button {
   position: absolute;
@@ -1427,266 +1596,6 @@ display: none;
   top: 347px;
 }
 
-.status-bar-red {
-  position: absolute;
-  width: 88px;
-  height: 17.68px;
-  left: 247px;
-  top: 304.12px;
-  background: #FF0000;
-}
-
-.status-bar-green {
-  position: absolute;
-  width: 68px;
-  height: 17.68px;
-  left: 247px;
-  top: 304.12px;
-  background: #31C613;
-}
-
-.status-bar-brown {
-  position: absolute;
-  width: 88px;
-  height: 17.68px;
-  left: 247px;
-  top: 283.5px;
-  background: #A46E4A;
-}
-
-.blue-background {
-  position: absolute;
-  width: 109px;
-  height: 10.8px;
-  left: 226px;
-  top: 264.84px;
-  background: #54B3C9;
-  border-radius: 4px;
-}
-
-.red-rectangle {
-  position: absolute;
-  width: 33px;
-  height: 11px;
-  left: 302px;
-  top: 265px;
-  background: #FF0000;
-  border-radius: 4px;
-}
-
-.blue-rectangle {
-  position: absolute;
-  width: 23px;
-  height: 11px;
-  left: 228px;
-  top: 356px;
-  background: #54B3C9;
-  border-radius: 4px;
-}
-
-.blue-rectangle-2 {
-  position: absolute;
-  width: 65px;
-  height: 10.8px;
-  left: 241px;
-  top: 264.84px;
-  background: #54B3C9;
-  border-radius: 4px;
-}
-
-.gray-rectangle {
-  position: absolute;
-  width: 88px;
-  height: 18px;
-  left: 245px;
-  top: 387px;
-  background: #7F6767;
-}
-
-.brown-rectangle {
-  position: absolute;
-  width: 88px;
-  height: 18px;
-  left: 245px;
-  top: 367px;
-  background: #A46E4A;
-}
-
-.red-rectangle-2 {
-  position: absolute;
-  width: 33px;
-  height: 11px;
-  left: 300px;
-  top: 260px;
-  background: #FF0000;
-  border-radius: 4px;
-}
-
-.red-rectangle-3 {
-  position: absolute;
-  width: 88px;
-  height: 11px;
-  left: 245px;
-  top: 351px;
-  background: #FF0000;
-  border-radius: 4px;
-}
-
-.pizza-background {
-  box-sizing: border-box;
-  position: absolute;
-  width: 334px;
-  height: 793px;
-  left: 749px;
-  top: 220px;
-  background: #DDB895;
-  border: 2px solid #000000;
-}
-
-.rectangle-17 {
-  position: absolute;
-  width: 297px;
-  height: 192px;
-  left: 768px;
-  top: 255px;
-  background: #AD8B6A;
-}
-
-.pizza-slice-8 {
-  position: absolute;
-  width: 111px;
-  height: 104.02px;
-  left: 781px;
-  top: 327px;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.pizza-slice-1 {
-  position: absolute;
-  width: 111px;
-  height: 104.02px;
-  left: 781px;
-  top: 327px;
-  background: #A46E4A;
-}
-
-.ellipse-11 {
-  position: absolute;
-  width: 102.17px;
-  height: 95.49px;
-  left: 785.06px;
-  top: 331.74px;
-  background: #D10303;
-}
-
-.ellipse-12 {
-  position: absolute;
-  width: 99.3px;
-  height: 91.94px;
-  left: 786.73px;
-  top: 333.63px;
-  background: #FF9D00;
-}
-
-.ellipse-13 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 796.99px;
-  top: 359.23px;
-  background: #D10303;
-}
-
-.ellipse-14 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 826.83px;
-  top: 342.16px;
-  background: #D10303;
-}
-
-.ellipse-17 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 796.99px;
-  top: 390.98px;
-  background: #D10303;
-}
-
-.ellipse-18 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 826.83px;
-  top: 403.3px;
-  background: #D10303;
-}
-
-.ellipse-15 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 856.67px;
-  top: 357.57px;
-  background: #D10303;
-}
-
-.ellipse-19 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 856.67px;
-  top: 390.98px;
-  background: #D10303;
-}
-
-.ellipse-16 {
-  position: absolute;
-  width: 17.66px;
-  height: 17.06px;
-  left: 826.83px;
-  top: 371.07px;
-  background: #D10303;
-}
-
-.rectangle-20 {
-  position: absolute;
-  width: 109px;
-  height: 81px;
-  left: 922px;
-  top: 354px;
-  background: #A46E4A;
-}
-
-.rectangle-22 {
-  position: absolute;
-  width: 109px;
-  height: 21px;
-  left: 922px;
-  top: 302px;
-  background: #A46E4A;
-}
-
-.rectangle-21 {
-  position: absolute;
-  width: 109px;
-  height: 21px;
-  left: 922px;
-  top: 326px;
-  background: #FF0000;
-}
-
-.rectangle-23 {
-  position: absolute;
-  width: 79px;
-  height: 21px;
-  left: 922px;
-  top: 326px;
-  background: #31C613;
-}
-
 @media (max-width: 1200px) {
   .pizza {
     width: 200px;
@@ -1870,6 +1779,137 @@ display: none;
     font-size: 42px;
     line-height: 75px;
   }
+
+  .top-bar {
+    height: 100px;
+    width: 98%;
+  }
+
+  .money, .time-label, .day-label {
+    font-size: 24px;
+  }
+
+  .money-amount, .time, .day {
+    font-size: 36px;
+    top: 45px;
+  }
+
+  .money {
+    left: 80px;
+  }
+
+  .money-amount {
+    left: 70px;
+  }
+
+  .time-label {
+    left: 350px;
+  }
+
+  .time {
+    left: 330px;
+  }
+
+  .day-label {
+    left: 650px;
+  }
+
+  .day {
+    left: 670px;
+  }
+
+  .circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .shop-icon {
+    left: 740px;
+    top: 5px;
+  }
+
+  .menu-icon {
+    left: 840px;
+    top: 5px;
+  }
+
+  .shop-image, .menu-image {
+    width: 80px;
+    height: 80px;
+    left: 7px;
+    top: 7px;
+   }
+
+   .customers, .staff, .pizzas, .inventory {
+     width: 182px;
+     height: 720px;
+     padding: 10px;
+   }
+
+   .customers {
+     left: 8px;
+     top: 150px;
+   }
+
+   .staff {
+     left: 255px;
+     top: 150px;
+   }
+
+   .pizzas {
+     left: 495px;
+     top: 150px;
+   }
+
+   .inventory {
+     left: 735px;
+     top: 150px;
+   }
+
+   .customers h2, .staff h2, .inventory h2, .pizzas h2 {
+     font-size: 36px;
+     margin: -60px 0 15px 10px;
+   }
+
+   .staff-tibble, .staff-sally {
+     width: 200px;
+     padding: 0px;
+     margin-left: -9px;
+   }
+
+   .tibble-avatar, .sally-avatar {
+     width: 50px;
+     height: 50px;
+   }
+
+   .tibble-name, .sally-name {
+     font-size: 16px;
+   }
+
+   .tibble-title, .tibble-xp, .sally-title, .sally-xp {
+     font-size: 12px;
+   }
+
+   .pizza-name {
+     font-size: 16px;
+   }
+
+   .status-text, .ingredient {
+     font-size: 12px;
+   }
+
+   .pizza-status-bar-green, .pizza-status-bar-red {
+     height: 16px;
+   }
+
+   .pizza-container, .inventory-item {
+     padding: 8px;
+   }
+
+   .peter-container, .jim-container {
+     width: 170px;
+     margin-left: -4px;
+   }
 }
 
 @media (max-width: 900px) {
@@ -2051,4 +2091,135 @@ display: none;
     font-size: 42px;
     line-height: 75px;
   }
+
+  .top-bar {
+    height: 100px;
+    width: 98%;
+  }
+
+  .money, .time-label, .day-label {
+    font-size: 24px;
+  }
+
+  .money-amount, .time, .day {
+    font-size: 36px;
+    top: 45px;
+  }
+
+  .money {
+    left: 80px;
+  }
+
+  .money-amount {
+    left: 70px;
+  }
+
+  .time-label {
+    left: 350px;
+  }
+
+  .time {
+    left: 330px;
+  }
+
+  .day-label {
+    left: 650px;
+  }
+
+  .day {
+    left: 670px;
+  }
+
+  .circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .shop-icon {
+    left: 740px;
+    top: 5px;
+  }
+
+  .menu-icon {
+    left: 840px;
+    top: 5px;
+  }
+
+  .shop-image, .menu-image {
+    width: 80px;
+    height: 80px;
+    left: 7px;
+    top: 7px;
+   }
+
+   .customers, .staff, .pizzas, .inventory {
+     width: 182px;
+     height: 720px;
+     padding: 10px;
+   }
+
+   .customers {
+     left: 8px;
+     top: 150px;
+   }
+
+   .staff {
+     left: 255px;
+     top: 150px;
+   }
+
+   .pizzas {
+     left: 495px;
+     top: 150px;
+   }
+
+   .inventory {
+     left: 735px;
+     top: 150px;
+   }
+
+   .customers h2, .staff h2, .inventory h2, .pizzas h2 {
+     font-size: 36px;
+     margin: -60px 0 15px 10px;
+   }
+
+   .staff-tibble, .staff-sally {
+     width: 200px;
+     padding: 0px;
+     margin-left: -9px;
+   }
+
+   .tibble-avatar, .sally-avatar {
+     width: 50px;
+     height: 50px;
+   }
+
+   .tibble-name, .sally-name {
+     font-size: 16px;
+   }
+
+   .tibble-title, .tibble-xp, .sally-title, .sally-xp {
+     font-size: 12px;
+   }
+
+   .pizza-name {
+     font-size: 16px;
+   }
+
+   .status-text, .ingredient {
+     font-size: 12px;
+   }
+
+   .pizza-status-bar-green, .pizza-status-bar-red {
+     height: 16px;
+   }
+
+   .pizza-container, .inventory-item {
+     padding: 8px;
+   }
+
+   .peter-container, .jim-container {
+     width: 170px;
+     margin-left: -4px;
+   }
 }
