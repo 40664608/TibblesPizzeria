@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
 
     <div class="top-bar">
         <div class="money">Money</div>
-        <div class="money-amount">£0</div>
+        <div class="money-amount">£500</div>
         <div class="time-label">Time</div>
         <div class="time">9:00am</div>
         <div class="day-label">Day</div>
@@ -34,7 +33,7 @@
             <div class="peter-container">
                 <div class="left">
                     <div class="peter-name">Peter</div>
-                    <div class="status">Pepperoni</div>
+                    <div class="status">Cheese</div>
                 </div>
                 <div class="right">
                     <div class="row">
@@ -91,7 +90,7 @@
         <div class="pizzas">
             <h2>Pizzas</h2>
             <div class="pizza-container">
-                <div class="pizza-name">Pepperoni Pizza</div>
+                <div class="pizza-name">Cheese Pizza</div>
                 <div class="pizza-status">
                     <div class="brown-rectangle">
                         <span class="status-text">Cooking...</span>
@@ -140,12 +139,15 @@
 <div class="settings-page" id="settings-page" style="display: none;">
     <div class="settings-container">
         <div class="settings-bg"></div>
+
         <div class="settings-header-bar"></div>
         <div class="settings-title">Settings</div>
+
         <div class="exit-button" id="exit-settings">
             <div class="exit-line1"></div>
             <div class="exit-line2"></div>
         </div>
+
         <div class="icon-button music-wrapper">
             <div class="icon-image music-icon"></div>
         </div>
@@ -155,15 +157,73 @@
         <div class="icon-button alert-wrapper">
             <div class="icon-image alert-icon"></div>
         </div>
+
         <div class="language-button" id="language">
             <div class="text">Language</div>
         </div>
+
         <div class="restart-button" id="restart">
             <div class="text">Restart</div>
         </div>
         <div class="back-home-button" id="back-home">
-            <div class="back-home-label">Back Home</div>
+            <div class="text">Back Home</div>
         </div>
+    </div>
+</div>
+
+<div class="language-page" id="language-page" style="display: none;">
+
+    <div class="language-container">
+        <div class="language-bg"></div>
+
+        <div class="language-header-bar"></div>
+        <div class="language-title">Languages</div>
+
+        <div class="exit-button" id="exit-language">
+            <div class="exit-line1"></div>
+            <div class="exit-line2"></div>
+        </div>
+
+        <div class="language-button en"></div>
+        <div class="language-label en">ENGLISH</div>
+
+        <div class="language-button fr"></div>
+        <div class="language-label fr">FRENCH</div>
+
+        <div class="language-button it"></div>
+        <div class="language-label it">ITALIAN</div>
+
+        <div class="language-button es"></div>
+        <div class="language-label es">SPANISH</div>
+
+        <div class="language-button de"></div>
+        <div class="language-label de">GERMAN</div>
+
+        <div class="language-button pt"></div>
+        <div class="language-label pt">PORTUGUESE</div>
+    </div>
+</div>
+
+<div class="restart-page" id="restart-page" style="display: none;">
+    <div class="restart-container">
+        <div class="restart-bg"></div>
+        <div class="restart-header-bar"></div>
+        <div class="restart-text">Are you sure You want to restart?</div>
+
+        <div class="restart-square-button yes-button">
+            <div class="yes-icon"></div>
+        </div>
+        <div class="restart-square-button no-button">
+            <div class="no-icon"></div>
+        </div>
+
+        <div class="exit-button" id="exit-restart">
+            <div class="exit-line1"></div>
+            <div class="exit-line2"></div>
+        </div>
+
+        <div class="label yes-label">YES</div>
+        <div class="label no-label">NO</div>
     </div>
 </div>
 
@@ -172,7 +232,6 @@
         <div class="shop-money">Money</div>
         <div class="shop-money-amount">£1000</div>
         <div class="back-button" id="back-to-restaurant">
-            <div class="circle"></div>
             <div class="back-icon"></div>
         </div>
         <div class="menu-icon">
@@ -181,85 +240,111 @@
         </div>
     </div>
 
-    <div class="shop-items">
-        <div class="shop-item">
-            <div class="item-box dough"></div>
-            <div class="item-price">£50</div>
-            <div class="dough-icon"></div>
-        </div>
-        <div class="shop-item">
-            <div class="item-box sauce"></div>
-            <div class="item-price">£100</div>
-            <div class="sauce-icon"></div>
-        </div>
-        <div class="shop-item">
-            <div class="item-box cheese"></div>
-            <div class="item-price">£125</div>
-            <div class="cheese-icon"></div>
-        </div>
-        <div class="shop-item">
-            <div class="item-box pepperoni"></div>
-            <div class="overlay"></div>
-            <div class="item-price">£200</div>
-            <div class="pepperoni-icon"></div>
-            <div class="lock-message">Level Up to Unlock</div>
-        </div>
-        <div class="shop-item">
-            <div class="item-box olives"></div>
-            <div class="overlay"></div>
-            <div class="item-price">£300</div>
-            <div class="olives-icon"></div>
-            <div class="lock-message">Level Up to Unlock</div>
-        </div>
-        <div class="shop-item">
-            <div class="item-box peppers"></div>
-            <div class="overlay"></div>
-            <div class="item-price">£400</div>
-            <div class="peppers-icon"></div>
-            <div class="lock-message">Level Up to Unlock</div>
+    <div class="shop-content">
+        <div class="shop-items">
+            <div class="shop-item">
+                <img src="images/dough.png" class="item-image" alt="Dough">
+                <div class="item-price">£50</div>
+                <div class="item-name">Dough</div>
+            </div>
+
+            <div class="shop-item">
+                <img src="images/tomato sauce.png" class="item-image" alt="Sauce">
+                <div class="item-price">£100</div>
+                <div class="item-name">Tomato Sauce</div>
+            </div>
+
+            <div class="shop-item">
+                <img src="images/cheese.png" class="item-image" alt="Cheese">
+                <div class="item-price">£125</div>
+                <div class="item-name">Cheese</div>
+            </div>
+
+            <div class="shop-item locked">
+                <img src="images/pepperoni.png" class="item-image" alt="Pepperoni">
+                <div class="item-price">£200</div>
+                <div class="item-name">Pepperoni</div>
+                <div class="lock-message">Level Up to Unlock</div>
+                <div class="item-overlay"></div>
+            </div>
+
+            <div class="shop-item locked">
+                <img src="images/olive.png" class="item-image" alt="Olive">
+                <div class="item-price">£300</div>
+                <div class="item-name">Olives</div>
+                <div class="lock-message">Level Up to Unlock</div>
+                <div class="item-overlay"></div>
+            </div>
+
+            <div class="shop-item locked">
+                <img src="images/peppers.png" class="item-image" alt="Pepper">
+                <div class="item-price">£400</div>
+                <div class="item-name">Peppers</div>
+                <div class="lock-message">Level Up to Unlock</div>
+                <div class="item-overlay"></div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="pizza-making-scene" id="pizza-making-scene">
-    <div class="back-button" id="back-to-restaurant-from-pizza"></div>
+    <div class="back-button" id="back-to-restaurant-from-pizza">
+        <div class="back-icon"></div>
+    </div>
+
     <div class="orders-panel">
         <div class="orders-bg"></div>
         <div class="orders-title">Orders</div>
         <div class="order-box"></div>
         <div class="order-name">Peter</div>
-        <div class="order-item">Pepperoni Pizza</div>
+        <div class="order-item">Cheese</div>
     </div>
-    <div class="pizza-display">
-        <div class="dough"></div>
-        <div class="sauce"></div>
-        <div class="cheese"></div>
-        <div class="pepperoni"></div>
-        <div class="ellipse ellipse-1"></div>
-        <div class="ellipse ellipse-2"></div>
-        <div class="ellipse ellipse-3"></div>
-        <div class="ellipse ellipse-4"></div>
-        <div class="ellipse ellipse-5"></div>
-        <div class="ellipse ellipse-6"></div>
-        <div class="ellipse ellipse-7"></div>
+
+    <div class="pizza-display-area">
+        <div class="pizza-display">
+            <div class="dough" style="display: none;"></div>
+            <div class="sauce" style="display: none;"></div>
+            <div class="cheese" style="display: none;"></div>
+            <div class="pepperoni-layer">
+            </div>
+        </div>
     </div>
+
     <div class="inventory-panel">
-        <div class="inventory-bg"></div>
+        <div class="inventory-bg">
+            <div class="inventory-items">
+                <div class="inventory-item">
+                    <div class="inventory-box inventory-dough"></div>
+                    <div class="inventory-label dough-label">Dough</div>
+                    <div class="inventory-count dough-count"><span class="count">7</span></div>
+                </div>
+
+                <div class="inventory-item">
+                    <div class="inventory-box inventory-sauce"></div>
+                    <div class="inventory-label sauce-label">Tomato Sauce</div>
+                    <div class="inventory-count sauce-count"><span class="count">4</span></div>
+                </div>
+
+                <div class="inventory-item">
+                    <div class="inventory-box inventory-cheese"></div>
+                    <div class="inventory-label cheese-label">Cheese</div>
+                    <div class="inventory-count cheese-count"><span class="count">6</span></div>
+                </div>
+
+                <div class="inventory-item">
+                    <div class="inventory-box inventory-pepperoni"></div>
+                    <div class="inventory-label pepperoni-label">Pepperoni</div>
+                    <div class="inventory-count pepperoni-count"><span class="count">2</span></div>
+                </div>
+            </div>
+        </div>
+
         <div class="inventory-title">Inventory</div>
-        <div class="inventory-box inventory-dough"></div>
-        <div class="inventory-label dough-label">Dough</div>
-        <div class="inventory-count dough-count"><span class="count">7</span></div>
-        <div class="inventory-box inventory-sauce"></div>
-        <div class="inventory-label sauce-label">Tomato Sauce</div>
-        <div class="inventory-count sauce-count"><span class="count">4</span></div>
-        <div class="inventory-box inventory-cheese"></div>
-        <div class="inventory-label cheese-label">Cheese</div>
-        <div class="inventory-count cheese-count"><span class="count">6</span></div>
-        <div class="inventory-box inventory-pepperoni"></div>
-        <div class="inventory-label pepperoni-label">Pepperoni</div>
-        <div class="inventory-count pepperoni-count"><span class="count">2</span></div>
-        <div class="clear-button" id="clear-pizza">Clear</div>
-        <div class="done-button" id="done-button">Done</div>
+
+        <div class="action-buttons">
+            <div class="clear-button" id="clear-pizza">Clear</div>
+            <div class="done-button" id="done-button">Done</div>
+        </div>
     </div>
 </div>
 

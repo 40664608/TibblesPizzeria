@@ -62,10 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const settingsPage = document.getElementById('settings-page');
     const restartPage = document.getElementById('restart-page');
     const languagePage = document.querySelector('.language-page');
+    const backHomeButton = document.getElementById('back-home');
     const pizzaMakingScene = document.getElementById('pizza-making-scene');
 
     const shopIcon = document.querySelector('.shop-icon');
-    const menuIcon = document.querySelector('.menu-icon');
+    const menuIcon = document.querySelectorAll('.menu-icon');
     const plusButton = document.querySelector('.plus-button');
     const backToRestaurantBtn = document.getElementById('back-to-restaurant');
     const backFromPizzaButton = document.getElementById('back-to-restaurant-from-pizza');
@@ -142,6 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function showRestaurantPage() {
+        restaurantPage.style.display = 'block';
+        document.querySelector('.main-sections').style.display = 'flex';
+        startAmbience();
+    }
+
     shopIcon.addEventListener('click', () => {
         playSound(buttonSound);
         restaurantPage.style.display = 'none';
@@ -149,12 +156,19 @@ document.addEventListener('DOMContentLoaded', () => {
         stopAmbience();
     });
 
-    menuIcon.addEventListener('click', () => {
-        playSound(buttonSound);
-        restaurantPage.style.display = 'none';
-        settingsPage.style.display = 'block';
-        stopAmbience();
-    });
+   document.querySelector('.restaurant-page .menu-icon').addEventListener('click', () => {
+       playSound(buttonSound);
+       restaurantPage.style.display = 'none';
+       settingsPage.style.display = 'block';
+       stopAmbience();
+   });
+
+   document.querySelector('.shop-page .menu-icon').addEventListener('click', () => {
+       playSound(buttonSound);
+       shopPage.style.display = 'none';
+       settingsPage.style.display = 'block';
+       stopAmbience();
+   });
 
     plusButton.addEventListener('click', () => {
         playSound(buttonSound);
@@ -166,21 +180,21 @@ document.addEventListener('DOMContentLoaded', () => {
     backToRestaurantBtn.addEventListener('click', () => {
         playSound(backSound);
         shopPage.style.display = 'none';
-        restaurantPage.style.display = 'block';
+        showRestaurantPage();
         startAmbience();
     });
 
     backFromPizzaButton.addEventListener('click', () => {
         playSound(backSound);
         pizzaMakingScene.style.display = 'none';
-        restaurantPage.style.display = 'block';
+        showRestaurantPage();
         startAmbience();
     });
 
     exitSettingsBtn.addEventListener('click', () => {
         playSound(backSound);
         settingsPage.style.display = 'none';
-        restaurantPage.style.display = 'block';
+        showRestaurantPage();
         startAmbience();
     });
 
@@ -253,6 +267,15 @@ document.addEventListener('DOMContentLoaded', () => {
             playSound(buttonSound);
             restartPage.style.display = 'none';
             settingsPage.style.display = 'block';
+        });
+    }
+
+    if (backHomeButton) {
+        backHomeButton.addEventListener('click', () => {
+            playSound(buttonSound);
+            setTimeout(() => {
+            window.location.href = 'index.html';
+            }, 300);
         });
     }
 
@@ -393,12 +416,46 @@ document.addEventListener('DOMContentLoaded', () => {
         updateInventoryUI();
         updateMoneyUI();
         refreshShopUI();
-        pizzaMakingScene.style.display = 'none';
+
+        document.querySelectorAll('.settings-page, .shop-page, .pizza-making-scene, .language-page, .restart-page').forEach(page => {
+            page.style.display = 'none';
+        });
+
+        restaurantPage.style.display = 'block';
+        document.querySelector('.main-sections').style.display = 'flex';
 
         updateMusicButtonUI();
         updateSoundButtonUI();
 
-        startAmbience();
+        document.body.addEventListener('click', function firstInteraction() {
+            if (isMusicOn) {
+                startAmbience();
+            }
+            document.body.removeEventListener('click', firstInteraction);
+        }, { once: true });
+    }
+
+    function startAmbience() {
+        if (!isMusicOn) return;
+
+        try {
+            ambienceSound.currentTime = 0;
+            ambienceSound.loop = true;
+            ambienceSound.volume = globalVolume * 0.3;
+            const playPromise = ambienceSound.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Audio play failed, waiting for interaction:", error);
+                    document.body.addEventListener('click', function retryPlay() {
+                        ambienceSound.play().catch(e => console.log("Still failed:", e));
+                        document.body.removeEventListener('click', retryPlay);
+                    }, { once: true });
+                });
+            }
+        } catch (e) {
+            console.log("Ambience error:", e);
+        }
     }
 
     initializeGame();

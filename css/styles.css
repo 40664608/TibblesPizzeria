@@ -18,7 +18,7 @@ body, html {
   box-sizing: border-box;
 }
 
-.starting-page, .settings-page, .language-page, .restart-page, .game-page, .help-page, .intro-page, .character-page, .restaurant-page, .pizza-making-scene {
+.starting-page, .settings-page, .language-page, .restart-page, .game-page, .help-page, .intro-page, .character-page, .restaurant-page, .shop-page, .pizza-making-scene {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -426,12 +426,33 @@ display: none;
   transform: translateX(-50%);
 }
 
+.back-home-button {
+  position: absolute;
+  width: 460px;
+  height: 100px;
+  background: var(--button-color);
+  border-radius: 26px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  top: 700px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .language-button .text {
   font-size: 64px;
   color: var(--text-color);
 }
 
 .restart-button .text {
+  font-size: 64px;
+  color: var(--text-color);
+}
+
+.back-home-button .text {
   font-size: 64px;
   color: var(--text-color);
 }
@@ -718,7 +739,7 @@ display: none;
   box-sizing: border-box;
 }
 
-.money, .time-label, .day-label {
+.money, .time-label, .day-label, .shop-money {
   font-family: 'Irish Grover', cursive;
   font-size: 35px;
   color: #A97726;
@@ -731,10 +752,24 @@ display: none;
   left: 130px;
 }
 
+.shop-money {
+  top: 19px;
+  left: 900px;
+}
+
 .money-amount {
   position: absolute;
   left: 120px;
   top: 60px;
+  font-family: 'Irish Grover';
+  font-size: 53px;
+  color: var(--text-color);
+}
+
+.shop-money-amount {
+  position: absolute;
+  left: 880px;
+  top: 50px;
   font-family: 'Irish Grover';
   font-size: 53px;
   color: var(--text-color);
@@ -813,7 +848,7 @@ display: none;
   background: var(--panel1-color);
   border: 2px solid black;
   height: 635px;
-  width: 400px;
+  width: 380px;
   padding: 20px;
 }
 .customers {
@@ -844,11 +879,11 @@ display: none;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: -900px;
-  width: 102%;
+  width: 103%;
   gap: 20px;
   position: relative;
   z-index: 1;
+  margin-bottom: 900px;
 }
 
 .peter-container, .jim-container {
@@ -1146,81 +1181,23 @@ display: none;
   border-radius: 10px;
 }
 
-.back-home-button {
-  position: absolute;
-  width: 460px;
-  height: 100px;
-  left: 490px;
-  top: 804px;
-  background: #AD8B6A;
-  border-radius: 26px;
-}
-
-.back-home-label {
-  position: absolute;
-  width: 402px;
-  height: 80px;
-  left: 58px;
-  top: 10px;
-  font-family: 'Irish Grover', cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 77px;
-  color: #1E1E1E;
-}
-
-.shop-page {
-    position: relative;
-    width: 1440px;
-    height: 1024px;
-    background: #F4C9A1;
-    font-family: 'Irish Grover', cursive;
-}
-
-.shop-page .top-bar {
-    position: absolute;
-    width: 1420px;
-    height: 136px;
-    left: 10px;
-    top: 11px;
-    background: #DDB895;
-    border: 2px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-.shop-money {
-    font-size: 35px;
-    color: #A97726;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.shop-money-amount {
-    font-size: 53px;
-    color: #000;
-    margin-left: 10px;
-}
-
 #back-to-restaurant {
-    position: relative;
-    width: 125px;
-    height: 117px;
-    left: 27px;
-    top: 20px;
-    background: #AD8B6A;
-    border-radius: 145px;
-    cursor: pointer;
+   position: absolute;
+   width: 73px;
+   height: 73px;
+   left: 20px;
+   top: 20px;
+   background: var(--button-color);
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
 }
 
-#back-to-restaurant .back-icon, .help-page .back-icon {
-    width: 63.5px;
-    height: 63.5px;
-    top: 78.19px;
-    left: 79.5px;
+#back-to-restaurant .back-icon, .help-page .back-icon, shop-page .back-icon, #back-to-restaurant-from-pizza .back-icon {
+    width: 50px;
+    height: 50px;
     background: url('../images/back.png') no-repeat center center;
     background-size: contain;
 }
@@ -1231,7 +1208,7 @@ display: none;
   height: 73px;
   left: 10px;
   top: 20px;
-  background: #AD8B6A;
+  background: var(--button-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1239,361 +1216,308 @@ display: none;
   cursor: pointer;
 }
 
+.shop-content {
+   padding: 160px;
+   display: flex;
+   justify-content: center;
+}
+
 .shop-items {
-    position: absolute;
-    top: 184px;
-    left: 90px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    width: 1260px;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 40px;
+   max-width: 1200px;
+   width: 100%;
+   cursor: pointer;
 }
 
 .shop-item {
+    background: var(--button-color);
+    border-radius: 15px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    width: 324px;
-    height: 362px;
+    height: 250px;
 }
 
-.item-box {
-    width: 100%;
-    height: 100%;
-    background: #AD8B6A;
-    border-radius: 8px;
+.shop-item:hover:not(.locked) {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.item-image {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 15px;
+}
+
+.item-name {
+    font-family: 'Irish Grover';
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 5px;
 }
 
 .item-price {
-    position: absolute;
-    bottom: -45px;
-    left: 10px;
-    width: 301px;
-    height: 64px;
-    background: #DDB895;
-    font-size: 53px;
-    line-height: 64px;
-    text-align: center;
-    color: #000;
+    font-family: 'Irish Grover';
+    font-size: 28px;
+    color: var(--text-color);
 }
 
-.dough-icon, .sauce-icon, .cheese-icon, .pepperoni-icon, .olives-icon, .peppers-icon {
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+.shop-item.locked {
+    opacity: 0.7;
 }
 
-.dough-icon {
-    width: 236px;
-    height: 236px;
-    top: 20px;
-    left: 44px;
-    background-image: url('../images/dough.png');
-}
-
-.sauce-icon {
-    width: 211px;
-    height: 211px;
-    top: 20px;
-    left: 56px;
-    background-image: url('../images/tomato sauce.png');
-}
-
-.cheese-icon {
-    width: 195px;
-    height: 195px;
-    top: 30px;
-    left: 65px;
-    background-image: url('../images/cheese.png');
-}
-
-.pepperoni-icon {
-    width: 213px;
-    height: 213px;
-    top: 30px;
-    left: 56px;
-    background-image: url('../images/pepperoni.png');
-    opacity: 0.43;
-}
-
-.olives-icon {
-    width: 235px;
-    height: 235px;
-    top: 20px;
-    left: 44px;
-    background-image: url('../images/olive.png');
-    opacity: 0.43;
-}
-
-.peppers-icon {
-    width: 219px;
-    height: 219px;
-    top: 30px;
-    left: 52px;
-    background-image: url('../images/peppers.png');
-    opacity: 0.32;
-}
-
-.overlay {
+.item-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 324px;
-    height: 362px;
-    background: rgba(0, 0, 0, 0.33);
-    border: 1px solid #000;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    border-radius: 15px;
 }
 
 .lock-message {
     position: absolute;
-    top: 150px;
+    bottom: 30px;
     width: 100%;
     text-align: center;
-    font-family: 'Istok Web', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    color: #fff;
+    font-family: 'Irish Grover';
+    font-size: 20px;
+    color: white;
+    z-index: 2;
 }
 
 .orders-panel {
     position: absolute;
-    width: 459px;
-    height: 923px;
+    width: 360px;
+    height: 850px;
     left: 30px;
     top: 53px;
 }
 
 .orders-bg {
     position: absolute;
-    width: 289px;
-    height: 859px;
-    background: #DDB895;
-    left: 30px;
-    top: 117px;
+    width: 85%;
+    height: calc(100% - 120px);
+    background: var(--panel1-color);
+    top: 120px;
+    border-radius: 20px;
 }
 
 .orders-title {
     position: absolute;
-    width: 341px;
-    height: 60px;
     font-family: 'Irish Grover', sans-serif;
-    font-size: 50px;
-    left: 148px;
-    top: 53px;
-    color: black;
+    font-size: 40px;
+    color: var(--text-color);
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    top: 40px;
+    left: 40%;
+    transform: translateX(-50%);
 }
 
 .order-box {
     position: absolute;
-    width: 252px;
-    height: 185px;
-    background: #CCA581;
-    left: 46px;
-    top: 140px;
+    width: 250px;
+    height: 180px;
+    background: var(--panel-color);
+    left: 25px;
+    top: 150px;
+    border-radius: 15px;
+}
+
+.order-name, .order-item {
+    position: absolute;
+    font-family: 'Irish Grover', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+    width: 80%;
 }
 
 .order-name {
-    position: absolute;
-    width: 147px;
-    height: 60px;
-    font-family: 'Irish Grover', sans-serif;
     font-size: 40px;
-    left: 63px;
-    top: 141px;
-    color: black;
+    top: 150px;
 }
 
 .order-item {
+    font-size: 30px;
+    top: 250px;
+}
+
+.pizza-display-area {
     position: absolute;
-    width: 203px;
-    height: 124px;
-    font-family: 'Irish Grover', sans-serif;
-    font-size: 36px;
-    left: 73px;
-    top: 201px;
-    color: black;
-    text-align: center;
-}
-
-.inventory-panel {
-    position: absolute;
-    width: 384px;
-    height: 923px;
-    left: 1126px;
-    top: 53px;
-}
-
-.inventory-bg {
-    position: absolute;
-    width: 289px;
-    height: 859px;
-    background: #DDB895;
-    left: 0px;
-    top: 64px;
-}
-
-.inventory-title {
-    position: absolute;
-    font-family: 'Irish Grover', sans-serif;
-    font-size: 50px;
-    width: 341px;
-    left: 43px;
-    top: 0px;
-    color: black;
-}
-
-.inventory-box {
-    position: absolute;
-    width: 252px;
-    height: 106px;
-    background: #CCA581;
-    left: 19px;
-    cursor: pointer;
-}
-
-.inventory-dough { top: 87px; }
-.inventory-sauce { top: 212px; }
-.inventory-cheese { top: 337px; }
-.inventory-pepperoni { top: 462px; }
-
-.inventory-label {
-    position: absolute;
-    font-family: 'Irish Grover', sans-serif;
-    font-size: 36px;
-    left: 32px;
-}
-
-.dough-label { top: 110px; }
-.sauce-label { top: 220px; }
-.cheese-label { top: 364px; }
-.pepperoni-label { top: 489px; }
-
-.inventory-count {
-    position: absolute;
-    font-family: 'Irish Grover', sans-serif;
-    font-size: 48px;
-    left: 207px;
-}
-
-.dough-count { top: 110px; }
-.sauce-count { top: 234px; }
-.cheese-count { top: 362px; }
-.pepperoni-count { top: 478px; }
-
-.done-button {
-  position: absolute;
-  width: 191px;
-  height: 60px;
-  left: 1221px;
-  top: 884px;
-
-  background: #CCA581;
-  font-family: 'Irish Grover', cursive;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 44px;
-  color: #000000;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.done-button:hover {
-  background-color: #9c7859;
+    width: 600px;
+    height: 600px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .pizza-display {
     position: relative;
-    width: 588px;
-    height: 590px;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
 }
 
-.dough, .sauce, .cheese, .pepperoni {
+.dough, .sauce, .cheese {
     position: absolute;
     border-radius: 50%;
     top: 0;
     left: 0;
-    transition: opacity 0.3s ease-in-out;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.3s ease;
 }
 
 .dough {
     width: 100%;
     height: 100%;
-    background: #AF8060;
-    z-index: 1;
+    background: #F0D3B2;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .sauce {
-    width: 93%;
-    height: 93%;
+    width: 90%;
+    height: 90%;
     background: #D10303;
-    top: 3.5%;
-    left: 3.5%;
-    z-index: 2;
+    opacity: 0.8;
 }
 
 .cheese {
-    width: 89%;
-    height: 89%;
-    background: #FF9D00;
-    top: 5.5%;
-    left: 5.5%;
-    z-index: 3;
+    width: 85%;
+    height: 85%;
+    background: #FFD700;
+    opacity: 0.9;
+}
+
+.pepperoni-layer {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    top: 7.5%;
+    left: 7.5%;
 }
 
 .pepperoni {
-    width: 20px;
-    height: 20px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
     background: #D10303;
-    z-index: 4;
+    border-radius: 50%;
+    border: 2px solid #8B0000;
 }
 
-.ellipse {
-  position: absolute;
-  width: 116px;
-  height: 111px;
-  background: #D10303;
+.inventory-panel {
+    position: absolute;
+    padding-top: 50px;
+    width: 360px;
+    height: 800px;
+    right: 30px;
+    top: 53px;
 }
 
-.ellipse-1 {
-  left: 605px;
-  top: 658px;
+.inventory-bg {
+    position: absolute;
+    width: 95%;
+    height: calc(100% - 120px);
+    background: var(--panel1-color);
+    top: 120px;
+    border-radius: 20px;
 }
 
-.ellipse-2 {
-  left: 774px;
-  top: 621px;
+.inventory-items {
+    margin-top: 20px;
 }
 
-.ellipse-3 {
-  left: 489px;
-  top: 547px;
+.inventory-title {
+    position: absolute;
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 40px;
+    color: var(--text-color);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
 }
 
-.ellipse-4 {
-  left: 662px;
-  top: 512px;
+.inventory-item {
+    position: relative;
+    width: 250px;
+    height: 100px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    background: var(--panel-color);
+    border-radius: 15px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-.ellipse-5 {
-  left: 819px;
-  top: 487px;
+.inventory-box {
+    width: 80px;
+    height: 80px;
+    background: var(--panel1-color);
+    border-radius: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-.ellipse-6 {
-  left: 538px;
-  top: 390px;
+.inventory-box:hover {
+    transform: scale(1.05);
 }
 
-.ellipse-7 {
-  left: 703px;
-  top: 347px;
+.inventory-label {
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 24px;
+    flex-grow: 1;
+}
+
+.inventory-count {
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 32px;
+    margin-left: 15px;
+}
+
+.action-buttons {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.clear-button, .done-button {
+    width: 120px;
+    height: 60px;
+    background: var(--panel-color);
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.clear-button:hover, .done-button:hover {
+    background: #B38A6D;
+    transform: translateY(-2px);
+}
+
+.clear-button:active, .done-button:active {
+    transform: translateY(1px);
 }
 
 @media (max-width: 1200px) {
@@ -1648,7 +1572,7 @@ display: none;
     top: 150px;
     }
 
-  .language-button, .restart-button {
+  .language-button, .restart-button, .back-home-button {
     width: 80%;
     font-size: 56px;
   }
@@ -1659,6 +1583,10 @@ display: none;
 
   .restart-button {
     top: 500px;
+  }
+
+  .back-home-button {
+    top: 620px;
   }
 
   .language-button.en { left: 250px; top: 285px; width: 30%; }
@@ -1910,6 +1838,77 @@ display: none;
      width: 170px;
      margin-left: -4px;
    }
+
+   .shop-content {
+     padding: 120px 20px;
+   }
+
+   .shop-items {
+     grid-template-columns: repeat(2, 1fr);
+     gap: 30px;
+     max-width: 800px;
+   }
+
+   .shop-item {
+     padding: 30px;
+     height: 180px;
+   }
+
+   .item-image {
+     width: 150px;
+     height: 150px;
+   }
+
+   .shop-money {
+     left: 400px;
+   }
+
+   .shop-money-amount {
+     left: 400px;
+     font-size: 40px;
+   }
+
+   .inventory-item {
+     width: 95%;
+   }
+
+   .orders-panel {
+     width: 200px;
+     height: 850px;
+   }
+
+   .inventory-panel {
+     width: 200px;
+     height: 800px;
+   }
+
+   .order-box {
+     width: 150px;
+     height: 150px;
+     left : 10px;
+   }
+
+   .pizza-display-area {
+     width: 400px;
+     height: 400px;
+   }
+
+   .order-name {
+     font-size: 30px;
+   }
+
+   .order-item {
+     font-size: 24px;
+     top: 220px;
+   }
+
+   .inventory-label {
+     font-size: 18px;
+   }
+
+   .inventory-count {
+     font-size: 24px;
+   }
 }
 
 @media (max-width: 900px) {
@@ -1960,7 +1959,7 @@ display: none;
     top: 150px;
   }
 
-  .language-button, .restart-button {
+  .language-button, .restart-button, .back-home-button {
     width: 85%;
     font-size: 50px;
   }
@@ -1971,6 +1970,10 @@ display: none;
 
   .restart-button {
     top: 500px;
+  }
+
+  .back-home-button {
+    top: 620px;
   }
 
   .language-button.en { left: 250px; top: 285px; width: 30%; }
@@ -2221,5 +2224,77 @@ display: none;
    .peter-container, .jim-container {
      width: 170px;
      margin-left: -4px;
+   }
+
+   .shop-content {
+     padding: 80px 20px;
+   }
+
+   .shop-items {
+     grid-template-columns: repeat(2, 1fr);
+     gap: 30px;
+     max-width: 800px;
+   }
+
+   .shop-item {
+     padding: 30px;
+     height: auto;
+     min-height: 250px;
+   }
+
+   .item-image {
+     width: 150px;
+     height: 150px;
+   }
+
+   .shop-money {
+     left: 600px;
+   }
+
+   .shop-money-amount {
+     left: 580px;
+     font-size: 40px;
+   }
+
+   .inventory-item {
+     width: 95%;
+   }
+
+   .orders-panel {
+     width: 200px;
+     height: 850px;
+   }
+
+   .inventory-panel {
+     width: 200px;
+     height: 800px;
+   }
+
+   .order-box {
+     width: 150px;
+     height: 150px;
+     left : 10px;
+   }
+
+   .pizza-display-area {
+     width: 400px;
+     height: 400px;
+   }
+
+   .order-name {
+     font-size: 30px;
+   }
+
+   .order-item {
+     font-size: 24px;
+     top: 220px;
+   }
+
+   .inventory-label {
+     font-size: 18px;
+   }
+
+   .inventory-count {
+     font-size: 24px;
    }
 }
