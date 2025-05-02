@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     customers[customerIndex].served = true;
                 }
 
-                money += 350;
+                money += 250;
                 updateInventoryUI();
                 updateMainInventoryDisplay();
                 updateUI();
