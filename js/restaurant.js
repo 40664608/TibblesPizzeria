@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerXP = 0;
     let customers = [];
     let currentOrder = null;
-    const customerNames = ["Peter", "Sarah", "Mike", "Emma", "John", "Lisa", "Dave", "Adam", "Mary", "James", "Harry", "Kate"];
+    const customerNames = [
+    "Peter", "Sarah", "Mike", "Emma", "John", "Lisa", "Dave", "Adam", "Mary", "James", "Harry", "Kate",
+    "Olivia", "Ben", "Chloe", "Tom", "Lucy", "Alex", "Sophie", "Daniel", "Grace", "Liam", "Mia", "Noah", "Ella"];
     const pizzaTypes = ["Cheese", "Pepperoni", "Veggie"];
     const peakHours = [11, 12, 13, 18, 19];
 
@@ -165,36 +167,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateCustomers() {
-            customers = [];
-            const availablePizzas = ["Cheese"];
-            if (playerLevel >= 2) availablePizzas.push("Pepperoni");
-            if (playerLevel >= 3) availablePizzas.push("Veggie");
+        customers = [];
+        const availablePizzas = ["Cheese"];
+        if (playerLevel >= 2) availablePizzas.push("Pepperoni");
+        if (playerLevel >= 3) availablePizzas.push("Veggie");
 
-            const customerCount = Math.floor(Math.random() * 20) + 20;
+        const customerCount = Math.floor(Math.random() * 14) + 14;
 
-            for (let i = 0; i < customerCount; i++) {
-                let arrivalTime;
-                const hour = Math.floor(Math.random() * 10) + 8;
-                const isPeakHour = peakHours.includes(hour % 24);
+        for (let i = 0; i < customerCount; i++) {
+            const arrivalTime = Math.floor(Math.random() * (1320 - 540)) + 540;
+            const hour = Math.floor(arrivalTime / 60) % 24;
+            const isPeakHour = peakHours.includes(hour);
 
-                if (isPeakHour) {
-                    arrivalTime = 540 + (hour * 60) + Math.floor(Math.random() * 30);
-                } else {
-                    arrivalTime = 540 + (hour * 60) + Math.floor(Math.random() * 60);
-                }
+            customers.push({
+                id: crypto.randomUUID(),
+                name: customerNames[Math.floor(Math.random() * customerNames.length)],
+                order: availablePizzas[Math.floor(Math.random() * availablePizzas.length)],
+                arrivalTime: arrivalTime,
+                served: false,
+                patience: isPeakHour ? (30 + Math.floor(Math.random() * 15)) : (55 + Math.floor(Math.random() * 15)),
+                isAngry: false
+           });
+       }
 
-                customers.push({
-                    name: customerNames[Math.floor(Math.random() * customerNames.length)],
-                    order: availablePizzas[Math.floor(Math.random() * availablePizzas.length)],
-                    arrivalTime: arrivalTime,
-                    served: false,
-                    patience: isPeakHour ? (30 + Math.floor(Math.random() * 15)) : (55 + Math.floor(Math.random() * 15)),
-                    isAngry: false
-                });
-            }
+       customers.sort((a, b) => a.arrivalTime - b.arrivalTime);
+   }
 
-            customers.sort((a, b) => a.arrivalTime - b.arrivalTime);
-        }
 
     function updateCustomers() {
         const customersContainer = document.querySelector('.customers');
@@ -282,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPizza.dough = true;
                 inventory.dough--;
                 updateInventoryUI();
+                updateMainInventoryDisplay();
                 doughLayer.style.display = 'block';
             } else if (inventory.dough === 0) {
                 playSound(alertSound);
@@ -298,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPizza.sauce = true;
                 inventory.sauce--;
                 updateInventoryUI();
+                updateMainInventoryDisplay();
                 sauceLayer.style.display = 'block';
             } else if (inventory.sauce === 0) {
                 playSound(alertSound);
@@ -317,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPizza.cheese = true;
                 inventory.cheese--;
                 updateInventoryUI();
+                updateMainInventoryDisplay();
                 cheeseLayer.style.display = 'block';
             } else if (inventory.cheese === 0) {
                 playSound(alertSound);
@@ -339,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPizza.pepperoni = true;
                 inventory.pepperoni--;
                 updateInventoryUI();
+                updateMainInventoryDisplay();
                 pepperoniLayer.style.display = 'block';
             } else if (inventory.pepperoni === 0) {
                 playSound(alertSound);
@@ -390,12 +392,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert(`Level up! Now level ${playerLevel}`);
                 }
 
-                const customerIndex = customers.findIndex(c => c.name === currentOrder.name);
+                const customerIndex = customers.findIndex(c => c.id === currentOrder.id);
                 if (customerIndex !== -1) {
                     customers[customerIndex].served = true;
                 }
 
-                money += 150;
+                money += 350;
+                updateInventoryUI();
+                updateMainInventoryDisplay();
                 updateUI();
                 checkGameOver();
 
