@@ -9,10 +9,9 @@
 </head>
 <body>
 <div class="restaurant-page">
-
     <div class="top-bar">
         <div class="money">Money</div>
-        <div class="money-amount">£500</div>
+        <div class="money-amount">£1000</div>
         <div class="time-label">Time</div>
         <div class="time">9:00am</div>
         <div class="day-label">Day</div>
@@ -30,44 +29,6 @@
     <div class="main-sections">
         <div class="customers">
             <h2>Customers</h2>
-            <div class="peter-container">
-                <div class="left">
-                    <div class="peter-name">Peter</div>
-                    <div class="status">Cheese</div>
-                </div>
-                <div class="right">
-                    <div class="row">
-                        <div class="blue-rectangle"></div>
-                        <div class="red-rectangle"></div>
-                    </div>
-                    <div class="brown-rectangle">
-                        <span class="waiting-text">Waiting...</span>
-                    </div>
-                    <div class="row">
-                        <div class="status-bar-green"></div>
-                        <div class="status-bar-red"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="jim-container">
-                <div class="left">
-                    <div class="jim-name">Jim</div>
-                    <div class="status">Ordering</div>
-                </div>
-                <div class="right">
-                    <div class="row">
-                        <div class="blue-rectangle-2"></div>
-                        <div class="red-rectangle-2"></div>
-                    </div>
-                    <div class="brown-rectangle">
-                        <span class="serve-text">Serve</span>
-                    </div>
-                    <div class="row">
-                        <div class="gray-rectangle"></div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="staff">
@@ -77,7 +38,7 @@
                 <div class="staff-sally-info">
                     <div class="sally-name">Sally</div>
                     <div class="sally-title">Chef lvl 1</div>
-                    <div class="sally-xp">0xp/100xp</div>
+                    <div class="sally-xp"><span class="current-xp">0</span>xp/<span class="max-xp">100</span>xp</div>
                 </div>
                 <div class="sally-divider"></div>
                 <div class="sally-status">
@@ -89,23 +50,6 @@
 
         <div class="pizzas">
             <h2>Pizzas</h2>
-            <div class="pizza-container">
-                <div class="pizza-name">Cheese Pizza</div>
-                <div class="pizza-status">
-                    <div class="brown-rectangle">
-                        <span class="status-text">Cooking...</span>
-                    </div>
-                    <div class="status-bars">
-                        <div class="pizza-status-bar-green"></div>
-                        <div class="pizza-status-bar-red"></div>
-                    </div>
-                    <div class="ingredients-container">
-                        <div class="ingredient">1 Dough</div>
-                        <div class="ingredient">1 Cheese</div>
-                        <div class="ingredient">1 Pepperoni</div>
-                    </div>
-                </div>
-            </div>
             <div class="plus-button">
                 <div class="horizontal"></div>
                 <div class="vertical"></div>
@@ -115,22 +59,6 @@
         <div class="inventory">
             <h2>Inventory</h2>
             <div class="inventory-items-container">
-                <div class="inventory-item">
-                    <span class="item-name">Dough</span>
-                    <span class="item-count">1</span>
-                </div>
-                <div class="inventory-item">
-                    <span class="item-name">Tomato Sauce</span>
-                    <span class="item-count">1</span>
-                </div>
-                <div class="inventory-item">
-                    <span class="item-name">Cheese</span>
-                    <span class="item-count">1</span>
-                </div>
-                <div class="inventory-item">
-                    <span class="item-name">Pepperoni</span>
-                    <span class="item-count">0</span>
-                </div>
             </div>
         </div>
     </div>
@@ -139,7 +67,6 @@
 <div class="settings-page" id="settings-page" style="display: none;">
     <div class="settings-container">
         <div class="settings-bg"></div>
-
         <div class="settings-header-bar"></div>
         <div class="settings-title">Settings</div>
 
@@ -230,7 +157,7 @@
 <div class="shop-page" id="shop-page" style="display: none;">
     <div class="top-bar">
         <div class="shop-money">Money</div>
-        <div class="shop-money-amount">£1000</div>
+        <div class="shop-money-amount">£500</div>
         <div class="back-button" id="back-to-restaurant">
             <div class="back-icon"></div>
         </div>
@@ -265,7 +192,6 @@
                 <div class="item-price">£200</div>
                 <div class="item-name">Pepperoni</div>
                 <div class="lock-message">Level Up to Unlock</div>
-                <div class="item-overlay"></div>
             </div>
 
             <div class="shop-item locked">
@@ -273,15 +199,13 @@
                 <div class="item-price">£300</div>
                 <div class="item-name">Olives</div>
                 <div class="lock-message">Level Up to Unlock</div>
-                <div class="item-overlay"></div>
             </div>
 
             <div class="shop-item locked">
                 <img src="images/peppers.png" class="item-image" alt="Pepper">
                 <div class="item-price">£400</div>
-                <div class="item-name">Peppers</div>
+                <div class="item-name">Pepper</div>
                 <div class="lock-message">Level Up to Unlock</div>
-                <div class="item-overlay"></div>
             </div>
         </div>
     </div>
@@ -296,8 +220,8 @@
         <div class="orders-bg"></div>
         <div class="orders-title">Orders</div>
         <div class="order-box"></div>
-        <div class="order-name">Peter</div>
-        <div class="order-item">Cheese</div>
+        <div class="order-name">No current order</div>
+        <div class="order-item">Please wait for customer</div>
     </div>
 
     <div class="pizza-display-area">
@@ -305,8 +229,9 @@
             <div class="dough" style="display: none;"></div>
             <div class="sauce" style="display: none;"></div>
             <div class="cheese" style="display: none;"></div>
-            <div class="pepperoni-layer">
-            </div>
+            <div class="pepperoni-layer" style="display: none;"></div>
+            <div class="olives" style="display: none;"></div>
+            <div class="peppers" style="display: none;"></div>
         </div>
     </div>
 
@@ -336,6 +261,17 @@
                     <div class="inventory-label pepperoni-label">Pepperoni</div>
                     <div class="inventory-count pepperoni-count"><span class="count">2</span></div>
                 </div>
+
+                <div class="inventory-item">
+                    <div class="inventory-box inventory-olives"></div>
+                    <div class="inventory-label olives-label">Olives</div>
+                    <div class="inventory-count olives-count"><span class="count">0</span></div>
+                </div>
+                <div class="inventory-item">
+                    <div class="inventory-box inventory-peppers"></div>
+                    <div class="inventory-label peppers-label">Peppers</div>
+                    <div class="inventory-count peppers-count"><span class="count">0</span></div>
+                </div>
             </div>
         </div>
 
@@ -350,7 +286,7 @@
 
 <audio id="alert-sound" src="sounds/Alert.mp3"></audio>
 <audio id="back-sound" src="sounds/Back.wav"></audio>
-<audio id="ambience" src="sounds/Ambience.wav"></audio>
+<audio id="ambience" src="sounds/Ambience.wav" preload="auto"></audio>
 <audio id="button-sound" src="sounds/Button2.wav"></audio>
 <audio id="dough-sound" src="sounds/Dough.wav"></audio>
 <audio id="pepperoni-sound" src="sounds/Pepperoni.wav"></audio>

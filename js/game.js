@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tibbleBtn.addEventListener("click", () => {
     playButtonSound();
+    localStorage.setItem('audioAllowed', 'true');
     setTimeout(() => {
     window.location.href = "/TibblesPizzeria/tibble-restaurant.html";
     }, 300);
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sallyBtn.addEventListener("click", () => {
     playButtonSound();
+    localStorage.setItem('audioAllowed', 'true');
     setTimeout(() => {
     window.location.href = "/TibblesPizzeria/sally-restaurant.html";
     }, 300);

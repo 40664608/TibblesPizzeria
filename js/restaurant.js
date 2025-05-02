@@ -6,9 +6,485 @@ document.addEventListener('DOMContentLoaded', () => {
     const doughSound = document.getElementById('dough-sound');
     const pepperoniSound = document.getElementById('pepperoni-sound');
 
+    let playerXP = 0;
+    let customers = [];
+    let currentOrder = null;
+    const customerNames = ["Peter", "Sarah", "Mike", "Emma", "John", "Lisa"];
+    const pizzaTypes = ["Cheese", "Pepperoni", "Veggie"];
+
     let isMusicOn = true;
     let isSoundOn = true;
     let globalVolume = 1;
+    let money = 1000;
+    let day = 1;
+    let time = 540;
+    let playerLevel = 1;
+    let gameInterval;
+
+    const inventory = {
+        dough: 1,
+        sauce: 1,
+        cheese: 1,
+        pepperoni: 0,
+        olives: 0,
+        peppers: 0
+    };
+
+    let currentPizza = {
+        dough: false,
+        sauce: false,
+        cheese: false,
+        pepperoni: false
+    };
+
+    const restaurantPage = document.querySelector('.restaurant-page');
+    const shopPage = document.getElementById('shop-page');
+    const settingsPage = document.getElementById('settings-page');
+    const restartPage = document.getElementById('restart-page');
+    const languagePage = document.querySelector('.language-page');
+    const pizzaMakingScene = document.getElementById('pizza-making-scene');
+
+    const moneyDisplay = document.querySelector('.money-amount');
+    const timeDisplay = document.querySelector('.time');
+    const dayDisplay = document.querySelector('.day');
+    const shopMoneyDisplay = document.querySelector('.shop-money-amount');
+
+    const doughBox = document.querySelector('.inventory-box.inventory-dough');
+    const doughCountEl = document.querySelector('.dough-count .count');
+    const sauceBox = document.querySelector('.inventory-box.inventory-sauce');
+    const sauceCountEl = document.querySelector('.sauce-count .count');
+    const cheeseBox = document.querySelector('.inventory-box.inventory-cheese');
+    const cheeseCountEl = document.querySelector('.cheese-count .count');
+    const pepperoniBox = document.querySelector('.inventory-box.inventory-pepperoni');
+    const pepperoniCountEl = document.querySelector('.pepperoni-count .count');
+    const doughLayer = document.querySelector('.dough');
+    const sauceLayer = document.querySelector('.sauce');
+    const cheeseLayer = document.querySelector('.cheese');
+    const pepperoniLayer = document.querySelector('.pepperoni');
+
+    function initGame() {
+        updateUI();
+        startGameLoop();
+        startAmbience();
+        setupEventListeners();
+        generateCustomers();
+    }
+
+    function startGameLoop() {
+        if (gameInterval) clearInterval(gameInterval);
+
+        gameInterval = setInterval(() => {
+            time += 1;
+
+            if (time % 5 === 0) {
+                updateCustomers();
+            }
+
+            if (time >= 1320) {
+                endDay();
+            }
+
+            updateUI();
+        }, 1000);
+    }
+
+    function generateCustomers() {
+            customers = [];
+
+            const customerCount = Math.floor(Math.random() * 3) + 3;
+            for (let i = 0; i < customerCount; i++) {
+                const arrivalTime = 540 + Math.floor(Math.random() * 720);
+
+                customers.push({
+                    name: customerNames[Math.floor(Math.random() * customerNames.length)],
+                    order: pizzaTypes[Math.floor(Math.random() * pizzaTypes.length)],
+                    arrivalTime: arrivalTime,
+                    served: false,
+                    patience: 15 + Math.floor(Math.random() * 10)
+                });
+            }
+
+            customers.sort((a, b) => a.arrivalTime - b.arrivalTime);
+        }
+
+        function updateCustomers() {
+            const customersContainer = document.querySelector('.customers');
+            customersContainer.innerHTML = '<h2>Customers</h2>';
+
+            const currentCustomers = customers.filter(c =>
+                !c.served && time >= c.arrivalTime && time < c.arrivalTime + c.patience
+            );
+
+            if (currentCustomers.length > 0) {
+                currentOrder = currentCustomers[0];
+
+                currentCustomers.forEach(customer => {
+                    const customerEl = document.createElement('div');
+                    customerEl.className = 'customer';
+                    customerEl.innerHTML = `
+                        <div class="customer-name">${customer.name}</div>
+                        <div class="customer-order">Wants: ${customer.order} Pizza</div>
+                        <div class="customer-patience">Patience: ${customer.arrivalTime + customer.patience - time} min</div>
+                    `;
+                    customersContainer.appendChild(customerEl);
+                });
+            } else {
+                currentOrder = null;
+                customersContainer.innerHTML += '<div class="no-customers">No customers at the moment</div>';
+            }
+
+            if (currentOrder) {
+                    document.querySelector('.order-name').textContent = currentOrder.name;
+                    document.querySelector('.order-item').textContent = currentOrder.order;
+                }
+        }
+
+    function updateUI() {
+        moneyDisplay.textContent = `£${money}`;
+        shopMoneyDisplay.textContent = `£${money}`;
+
+        const hours = Math.floor(time / 60);
+        const minutes = time % 60;
+        const ampm = hours >= 12 ? 'pm' : 'am';
+        const displayHours = hours % 12 || 12;
+        timeDisplay.textContent = `${displayHours}:${minutes.toString().padStart(2, '0')}${ampm}`;
+
+        dayDisplay.textContent = day;
+
+        updateInventoryUI();
+    }
+
+    function updateInventoryUI() {
+        doughCountEl.textContent = inventory.dough;
+        sauceCountEl.textContent = inventory.sauce;
+        cheeseCountEl.textContent = inventory.cheese;
+        pepperoniCountEl.textContent = inventory.pepperoni;
+    }
+
+    function endDay() {
+           const servedCustomers = customers.filter(c => c.served).length;
+           money += servedCustomers * 100;
+
+           day++;
+           time = 540;
+           generateCustomers();
+           updateUI();
+
+           alert(`Day ${day - 1} ended! You served ${servedCustomers} customers. Starting day ${day}`);
+       }
+
+    function setupPizzaMakingListeners() {
+
+        doughBox.addEventListener('click', () => {
+            if (inventory.dough > 0 && !currentPizza.dough) {
+                playSound(doughSound);
+                currentPizza.dough = true;
+                inventory.dough--;
+                updateInventoryUI();
+                doughLayer.style.display = 'block';
+            } else if (inventory.dough === 0) {
+                playSound(alertSound);
+                alert("No more dough in inventory!");
+            }
+        });
+
+        sauceBox.addEventListener('click', () => {
+            playSound(buttonSound);
+            if (!currentPizza.dough) {
+                playSound(alertSound);
+                alert("Add dough first!");
+            } else if (inventory.sauce > 0 && !currentPizza.sauce) {
+                currentPizza.sauce = true;
+                inventory.sauce--;
+                updateInventoryUI();
+                sauceLayer.style.display = 'block';
+            } else if (inventory.sauce === 0) {
+                playSound(alertSound);
+                alert("No more sauce in inventory!");
+            }
+        });
+
+        cheeseBox.addEventListener('click', () => {
+            playSound(buttonSound);
+            if (!currentPizza.dough) {
+                playSound(alertSound);
+                alert("Add dough first!");
+            } else if (!currentPizza.sauce) {
+                playSound(alertSound);
+                alert("Add sauce first!");
+            } else if (inventory.cheese > 0 && !currentPizza.cheese) {
+                currentPizza.cheese = true;
+                inventory.cheese--;
+                updateInventoryUI();
+                cheeseLayer.style.display = 'block';
+            } else if (inventory.cheese === 0) {
+                playSound(alertSound);
+                alert("No more cheese in inventory!");
+            }
+        });
+
+        pepperoniBox.addEventListener('click', () => {
+            if (!currentPizza.dough) {
+                playSound(alertSound);
+                alert("Add dough first!");
+            } else if (!currentPizza.sauce) {
+                playSound(alertSound);
+                alert("Add sauce first!");
+            } else if (!currentPizza.cheese) {
+                playSound(alertSound);
+                alert("Add cheese first!");
+            } else if (inventory.pepperoni > 0 && !currentPizza.pepperoni) {
+                playSound(pepperoniSound);
+                currentPizza.pepperoni = true;
+                inventory.pepperoni--;
+                updateInventoryUI();
+                pepperoniLayer.style.display = 'block';
+            } else if (inventory.pepperoni === 0) {
+                playSound(alertSound);
+                alert("No more pepperoni in inventory!");
+            }
+        });
+
+        document.getElementById('clear-pizza').addEventListener('click', () => {
+            playSound(buttonSound);
+            currentPizza = { dough: false, sauce: false, cheese: false, pepperoni: false };
+            document.querySelectorAll('.dough, .sauce, .cheese, .pepperoni').forEach(layer => {
+                layer.style.display = 'none';
+            });
+        });
+
+       document.getElementById('done-button').addEventListener('click', () => {
+           playSound(buttonSound);
+
+           if (!currentOrder) {
+               alert("No current order to serve!");
+               return;
+           }
+
+           const orderedPizza = currentOrder.order.toLowerCase();
+           let pizzaCorrect = false;
+
+           if (orderedPizza === "cheese" && currentPizza.dough && currentPizza.sauce && currentPizza.cheese) {
+               pizzaCorrect = true;
+           } else if (orderedPizza === "pepperoni" && currentPizza.dough && currentPizza.sauce &&
+                     currentPizza.cheese && currentPizza.pepperoni) {
+               pizzaCorrect = true;
+           } else if (orderedPizza === "veggie" && currentPizza.dough && currentPizza.sauce &&
+                      currentPizza.cheese && (currentPizza.olives || currentPizza.peppers)) {
+               pizzaCorrect = true;
+           }
+
+           if (pizzaCorrect) {
+               if (currentPizza.dough) inventory.dough--;
+               if (currentPizza.sauce) inventory.sauce--;
+               if (currentPizza.cheese) inventory.cheese--;
+               if (currentPizza.pepperoni) inventory.pepperoni--;
+
+               playerXP += 25;
+               if (playerXP >= 100) {
+                   playerLevel++;
+                   playerXP = 0;
+                   alert(`Level up! Now level ${playerLevel}`);
+               }
+
+               const customerIndex = customers.findIndex(c => c.name === currentOrder.name);
+               if (customerIndex !== -1) {
+                   customers[customerIndex].served = true;
+               }
+
+               money += 150;
+               updateUI();
+
+               currentPizza = { dough: false, sauce: false, cheese: false, pepperoni: false };
+               document.querySelectorAll('.dough, .sauce, .cheese, .pepperoni').forEach(layer => {
+                   layer.style.display = 'none';
+               });
+
+               updateCustomers();
+
+               pizzaMakingScene.style.display = 'none';
+               restaurantPage.style.display = 'block';
+               startAmbience();
+           } else {
+               alert("This doesn't match the customer's order!");
+           }
+       });
+           }
+
+    function isUnlocked(item) {
+        const unlockLevel = {
+            pepperoni: 2,
+            olives: 3,
+            peppers: 4
+        };
+        return !unlockLevel[item] || playerLevel >= unlockLevel[item];
+    }
+
+    function saveGame() {
+        const gameState = {
+            money, day, time, playerLevel, playerXP, inventory
+        };
+        localStorage.setItem('pizzaGameSave', JSON.stringify(gameState));
+    }
+
+    function loadGame() {
+        const saved = localStorage.getItem('pizzaGameSave');
+        if (saved) {
+            const gameState = JSON.parse(saved);
+        }
+    }
+
+    function setupShopListeners() {
+            document.querySelectorAll('.shop-item:not(.locked)').forEach(item => {
+                item.addEventListener('click', () => {
+                    playSound(buttonSound);
+                    const itemName = item.querySelector('.item-name').textContent.toLowerCase().replace(' ', '-');
+                    const price = parseInt(item.querySelector('.item-price').textContent.replace('£', ''));
+
+                    if (money >= price) {
+                        money -= price;
+                        inventory[itemName]++;
+                        updateInventoryUI();
+                        updateUI();
+                    } else {
+                        playSound(alertSound);
+                        alert('Not enough money!');
+                    }
+                });
+            });
+        }
+
+    function showRestaurantPage() {
+        document.querySelectorAll('.settings-page, .shop-page, .pizza-making-scene, .language-page, .restart-page').forEach(page => {
+            page.style.display = 'none';
+        });
+        restaurantPage.style.display = 'block';
+        startAmbience();
+    }
+
+    function setupPageNavigation() {
+        document.querySelector('.shop-icon').addEventListener('click', (e) => {
+            e.preventDefault();
+            playSound(buttonSound);
+            restaurantPage.style.display = 'none';
+            shopPage.style.display = 'block';
+            stopAmbience();
+        });
+
+        document.querySelectorAll('.menu-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.preventDefault();
+                playSound(buttonSound);
+                restaurantPage.style.display = 'none';
+                shopPage.style.display = 'none';
+                settingsPage.style.display = 'block';
+                stopAmbience();
+            });
+        });
+
+        document.querySelector('.plus-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            playSound(buttonSound);
+            restaurantPage.style.display = 'none';
+            pizzaMakingScene.style.display = 'block';
+            stopAmbience();
+
+            currentPizza = { dough: false, sauce: false, cheese: false, pepperoni: false };
+            document.querySelectorAll('.dough, .sauce, .cheese, .pepperoni').forEach(layer => {
+                layer.style.display = 'none';
+            });
+        });
+
+        document.querySelectorAll('[id^="back-to-restaurant"], [id^="exit-"]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                playSound(backSound);
+                showRestaurantPage();
+            });
+        });
+    }
+
+    function setupLanguageSystem() {
+        document.getElementById('language').addEventListener('click', () => {
+            playSound(buttonSound);
+            settingsPage.style.display = 'none';
+            languagePage.style.display = 'block';
+        });
+
+        const exitLanguage = document.getElementById('exit-language');
+        if (exitLanguage) {
+            exitLanguage.addEventListener('click', () => {
+                playSound(buttonSound);
+                languagePage.style.display = 'none';
+                settingsPage.style.display = 'block';
+            });
+        }
+
+        const languages = ['en', 'fr', 'it', 'es', 'de', 'pt'];
+        languages.forEach(lang => {
+            const button = document.querySelector(`.language-button.${lang}`);
+            if (button) {
+                button.addEventListener('click', () => {
+                    playSound(buttonSound);
+                    setLanguage(lang);
+                });
+            }
+        });
+    }
+
+    function setLanguage(languageCode) {
+        const languageNames = {
+            en: 'English',
+            fr: 'French',
+            it: 'Italian',
+            es: 'Spanish',
+            de: 'German',
+            pt: 'Portuguese'
+        };
+        alert(`Language set to ${languageNames[languageCode] || 'Unknown'}`);
+        languagePage.style.display = 'none';
+        settingsPage.style.display = 'block';
+    }
+
+    function setupRestartSystem() {
+        document.getElementById('restart').addEventListener('click', () => {
+            playSound(buttonSound);
+            settingsPage.style.display = 'none';
+            restartPage.style.display = 'block';
+        });
+
+        const yesButton = document.querySelector('.yes-button');
+        const noButton = document.querySelector('.no-button');
+        const exitRestart = document.getElementById('exit-restart');
+
+        if (yesButton) {
+            yesButton.addEventListener('click', () => {
+                playSound(buttonSound);
+                alert('Game Restarted!');
+                restartPage.style.display = 'none';
+                money = 1000;
+                day = 1;
+                time = 540;
+                updateUI();
+            });
+        }
+
+        if (noButton) {
+            noButton.addEventListener('click', () => {
+                playSound(buttonSound);
+                restartPage.style.display = 'none';
+                settingsPage.style.display = 'block';
+            });
+        }
+
+        if (exitRestart) {
+            exitRestart.addEventListener('click', () => {
+                playSound(buttonSound);
+                restartPage.style.display = 'none';
+                settingsPage.style.display = 'block';
+            });
+        }
+    }
 
     function playSound(sound) {
         if (!isSoundOn) return;
@@ -57,375 +533,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const restaurantPage = document.querySelector('.restaurant-page');
-    const shopPage = document.getElementById('shop-page');
-    const settingsPage = document.getElementById('settings-page');
-    const restartPage = document.getElementById('restart-page');
-    const languagePage = document.querySelector('.language-page');
-    const backHomeButton = document.getElementById('back-home');
-    const pizzaMakingScene = document.getElementById('pizza-making-scene');
-
-    const shopIcon = document.querySelector('.shop-icon');
-    const menuIcon = document.querySelectorAll('.menu-icon');
-    const plusButton = document.querySelector('.plus-button');
-    const backToRestaurantBtn = document.getElementById('back-to-restaurant');
-    const backFromPizzaButton = document.getElementById('back-to-restaurant-from-pizza');
-    const exitSettingsBtn = document.getElementById('exit-settings');
-    const alertButton = document.querySelector('.alert-wrapper');
-    const musicButton = document.querySelector('.music-wrapper');
-    const soundButton = document.querySelector('.sound-wrapper');
-
-    const doughBox = document.querySelector('.inventory-box.inventory-dough');
-    const doughCountEl = document.querySelector('.dough-count .count');
-    const sauceBox = document.querySelector('.inventory-box.inventory-sauce');
-    const sauceCountEl = document.querySelector('.sauce-count .count');
-    const cheeseBox = document.querySelector('.inventory-box.inventory-cheese');
-    const cheeseCountEl = document.querySelector('.cheese-count .count');
-    const pepperoniBox = document.querySelector('.inventory-box.inventory-pepperoni');
-    const pepperoniCountEl = document.querySelector('.pepperoni-count .count');
-
-    const doughLayer = document.querySelector('.dough');
-    const sauceLayer = document.querySelector('.sauce');
-    const cheeseLayer = document.querySelector('.cheese');
-    const pepperoniLayer = document.querySelector('.pepperoni');
-
-    const shopMoneyDisplay = document.querySelector('.shop-money-amount');
-    const inventory = {
-        dough: 1,
-        sauce: 1,
-        cheese: 1,
-        pepperoni: 0,
-        olives: 0,
-        peppers: 0
-    };
-    let money = 1000;
-    let playerLevel = 1;
-    let currentPizza = {
-        dough: false,
-        sauce: false,
-        cheese: false,
-        pepperoni: false
-    };
-
-    function updateInventoryUI() {
-        document.querySelectorAll('.inventory-item').forEach(item => {
-            const itemName = item.querySelector('.item-name').textContent.toLowerCase().replace(' ', '-');
-            if (inventory.hasOwnProperty(itemName)) {
-                item.querySelector('.item-count').textContent = inventory[itemName];
-            }
-        });
-    }
-
-    function updateMoneyUI() {
-        shopMoneyDisplay.textContent = `£${money}`;
-        document.querySelector('.money-amount').textContent = `£${money}`;
-    }
-
-    function isUnlocked(item) {
-        const unlockLevel = {
-            pepperoni: 2,
-            olives: 3,
-            peppers: 4
-        };
-        return !unlockLevel[item] || playerLevel >= unlockLevel[item];
-    }
-
-    function refreshShopUI() {
-        document.querySelectorAll('.shop-item').forEach(item => {
-            const type = Array.from(item.querySelector('.item-box').classList)
-                .find(cls => ['dough', 'sauce', 'cheese', 'pepperoni', 'olives', 'peppers'].includes(cls));
-
-            if (isUnlocked(type)) {
-                item.querySelector('.overlay').style.display = 'none';
-            } else {
-                item.querySelector('.overlay').style.display = 'block';
-            }
-        });
-    }
-
-    function showRestaurantPage() {
-        restaurantPage.style.display = 'block';
-        document.querySelector('.main-sections').style.display = 'flex';
-        startAmbience();
-    }
-
-    shopIcon.addEventListener('click', () => {
-        playSound(buttonSound);
-        restaurantPage.style.display = 'none';
-        shopPage.style.display = 'block';
-        stopAmbience();
-    });
-
-   document.querySelector('.restaurant-page .menu-icon').addEventListener('click', () => {
-       playSound(buttonSound);
-       restaurantPage.style.display = 'none';
-       settingsPage.style.display = 'block';
-       stopAmbience();
-   });
-
-   document.querySelector('.shop-page .menu-icon').addEventListener('click', () => {
-       playSound(buttonSound);
-       shopPage.style.display = 'none';
-       settingsPage.style.display = 'block';
-       stopAmbience();
-   });
-
-    plusButton.addEventListener('click', () => {
-        playSound(buttonSound);
-        restaurantPage.style.display = 'none';
-        pizzaMakingScene.style.display = 'block';
-        stopAmbience();
-    });
-
-    backToRestaurantBtn.addEventListener('click', () => {
-        playSound(backSound);
-        shopPage.style.display = 'none';
-        showRestaurantPage();
-        startAmbience();
-    });
-
-    backFromPizzaButton.addEventListener('click', () => {
-        playSound(backSound);
-        pizzaMakingScene.style.display = 'none';
-        showRestaurantPage();
-        startAmbience();
-    });
-
-    exitSettingsBtn.addEventListener('click', () => {
-        playSound(backSound);
-        settingsPage.style.display = 'none';
-        showRestaurantPage();
-        startAmbience();
-    });
-
-    document.getElementById('language').addEventListener('click', () => {
-        playSound(buttonSound);
-        settingsPage.style.display = 'none';
-        languagePage.style.display = 'block';
-    });
-
-    document.getElementById('restart').addEventListener('click', () => {
-        playSound(buttonSound);
-        settingsPage.style.display = 'none';
-        restartPage.style.display = 'block';
-    });
-
-    const exitLanguage = document.getElementById('exit-language');
-    if (exitLanguage) {
-        exitLanguage.addEventListener('click', () => {
-            playSound(buttonSound);
-            languagePage.style.display = 'none';
-            settingsPage.style.display = 'block';
-        });
-    }
-
-    const languages = ['en', 'fr', 'it', 'es', 'de', 'pt'];
-    languages.forEach(lang => {
-        const button = document.querySelector(`.language-button.${lang}`);
-        if (button) {
-            button.addEventListener('click', () => {
+    function setupAudioControls() {
+        const musicButton = document.querySelector('.music-wrapper');
+        if (musicButton) {
+            musicButton.addEventListener('click', () => {
                 playSound(buttonSound);
-                setLanguage(lang);
+                toggleMusic();
             });
         }
-    });
 
-    function setLanguage(languageCode) {
-        const languageNames = {
-            en: 'English',
-            fr: 'French',
-            it: 'Italian',
-            es: 'Spanish',
-            de: 'German',
-            pt: 'Portuguese'
-        };
+        const soundButton = document.querySelector('.sound-wrapper');
+        if (soundButton) {
+            soundButton.addEventListener('click', () => {
+                playSound(buttonSound);
+                toggleSound();
+            });
+        }
 
-        alert(`Language set to ${languageNames[languageCode] || 'Unknown'}`);
-        languagePage.style.display = 'none';
-        settingsPage.style.display = 'block';
-    }
-
-    const yesButton = document.querySelector('.yes-button');
-    const noButton = document.querySelector('.no-button');
-    const exitRestart = document.getElementById('exit-restart');
-
-    if (yesButton && noButton && exitRestart) {
-        yesButton.addEventListener('click', () => {
-            playSound(buttonSound);
-            alert('Game Restarted!');
-            restartPage.style.display = 'none';
-            startingPage.style.display = 'block';
-        });
-
-        noButton.addEventListener('click', () => {
-            playSound(buttonSound);
-            restartPage.style.display = 'none';
-            settingsPage.style.display = 'block';
-        });
-
-        exitRestart.addEventListener('click', () => {
-            playSound(buttonSound);
-            restartPage.style.display = 'none';
-            settingsPage.style.display = 'block';
-        });
-    }
-
-    if (backHomeButton) {
-        backHomeButton.addEventListener('click', () => {
-            playSound(buttonSound);
-            setTimeout(() => {
-            window.location.href = 'index.html';
-            }, 300);
-        });
-    }
-
-    if (musicButton) {
-        musicButton.addEventListener('click', () => {
-            playSound(buttonSound);
-            toggleMusic();
-        });
-    }
-
-    if (soundButton) {
-        soundButton.addEventListener('click', () => {
-            playSound(buttonSound);
-            toggleSound();
-        });
-    }
-
-    if (alertButton) {
-        alertButton.addEventListener('click', () => {
-            playSound(alertSound);
-        });
-    }
-
-    document.querySelectorAll('.shop-item').forEach(item => {
-        item.addEventListener('click', () => {
-            playSound(buttonSound);
-            const itemBox = item.querySelector('.item-box');
-            const type = Array.from(itemBox.classList).find(cls =>
-                ['dough', 'sauce', 'cheese', 'pepperoni', 'olives', 'peppers'].includes(cls)
-            );
-
-            const price = parseInt(item.querySelector('.item-price').textContent.replace('£', ''));
-
-            if (!isUnlocked(type)) {
+        const alertButton = document.querySelector('.alert-wrapper');
+        if (alertButton) {
+            alertButton.addEventListener('click', () => {
                 playSound(alertSound);
-                alert('This item is locked. Level up to unlock it!');
-                return;
-            }
-
-            if (money >= price) {
-                money -= price;
-                inventory[type]++;
-                updateInventoryUI();
-                updateMoneyUI();
-            } else {
-                playSound(alertSound);
-                alert('Not enough money!');
-            }
-        });
-    });
-
-    doughBox.addEventListener('click', () => {
-        if (inventory.dough > 0 && !currentPizza.dough) {
-            playSound(doughSound);
-            currentPizza.dough = true;
-            inventory.dough--;
-            doughCountEl.textContent = inventory.dough;
-            doughLayer.style.display = 'block';
-        } else if (inventory.dough === 0) {
-            playSound(alertSound);
-            alert("No more dough in inventory!");
+            });
         }
-    });
+    }
 
-    sauceBox.addEventListener('click', () => {
-        playSound(buttonSound);
-        if (!currentPizza.dough) {
-            playSound(alertSound);
-            alert("Add dough first!");
-        } else if (inventory.sauce > 0 && !currentPizza.sauce) {
-            currentPizza.sauce = true;
-            inventory.sauce--;
-            sauceCountEl.textContent = inventory.sauce;
-            sauceLayer.style.display = 'block';
-        } else if (inventory.sauce === 0) {
-            playSound(alertSound);
-            alert("No more sauce in inventory!");
+    function setupEventListeners() {
+        setupPageNavigation();
+        setupPizzaMakingListeners();
+        setupShopListeners();
+        setupLanguageSystem();
+        setupRestartSystem();
+        setupAudioControls();
+
+        const backHomeButton = document.getElementById('back-home');
+        if (backHomeButton) {
+            backHomeButton.addEventListener('click', () => {
+                playSound(buttonSound);
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 300);
+            });
         }
-    });
-
-    cheeseBox.addEventListener('click', () => {
-        playSound(buttonSound);
-        if (!currentPizza.dough) {
-            playSound(alertSound);
-            alert("Add dough first!");
-        } else if (!currentPizza.sauce) {
-            playSound(alertSound);
-            alert("Add sauce first!");
-        } else if (inventory.cheese > 0 && !currentPizza.cheese) {
-            currentPizza.cheese = true;
-            inventory.cheese--;
-            cheeseCountEl.textContent = inventory.cheese;
-            cheeseLayer.style.display = 'block';
-        } else if (inventory.cheese === 0) {
-            playSound(alertSound);
-            alert("No more cheese in inventory!");
-        }
-    });
-
-    pepperoniBox.addEventListener('click', () => {
-        if (!currentPizza.dough) {
-            playSound(alertSound);
-            alert("Add dough first!");
-        } else if (!currentPizza.sauce) {
-            playSound(alertSound);
-            alert("Add sauce first!");
-        } else if (!currentPizza.cheese) {
-            playSound(alertSound);
-            alert("Add cheese first!");
-        } else if (inventory.pepperoni > 0 && !currentPizza.pepperoni) {
-            playSound(pepperoniSound);
-            currentPizza.pepperoni = true;
-            inventory.pepperoni--;
-            pepperoniCountEl.textContent = inventory.pepperoni;
-            pepperoniLayer.style.display = 'block';
-        } else if (inventory.pepperoni === 0) {
-            playSound(alertSound);
-            alert("No more pepperoni in inventory!");
-        }
-    });
-
-    document.getElementById('done-button').addEventListener('click', () => {
-        playSound(buttonSound);
-        pizzaMakingScene.style.display = 'none';
-        restaurantPage.style.display = 'block';
-        startAmbience();
-    });
-
-    document.getElementById('clear-pizza').addEventListener('click', () => {
-        playSound(buttonSound);
-        currentPizza = { dough: false, sauce: false, cheese: false, pepperoni: false };
-        document.querySelectorAll('.dough, .sauce, .cheese, .pepperoni').forEach(layer => {
-            layer.style.display = 'none';
-        });
-    });
+    }
 
     function initializeGame() {
-        updateInventoryUI();
-        updateMoneyUI();
-        refreshShopUI();
+        updateUI();
 
         document.querySelectorAll('.settings-page, .shop-page, .pizza-making-scene, .language-page, .restart-page').forEach(page => {
             page.style.display = 'none';
         });
-
         restaurantPage.style.display = 'block';
-        document.querySelector('.main-sections').style.display = 'flex';
 
-        updateMusicButtonUI();
-        updateSoundButtonUI();
+        startAmbience();
+        setupEventListeners();
 
         document.body.addEventListener('click', function firstInteraction() {
             if (isMusicOn) {
@@ -435,28 +596,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
     }
 
-    function startAmbience() {
-        if (!isMusicOn) return;
-
-        try {
-            ambienceSound.currentTime = 0;
-            ambienceSound.loop = true;
-            ambienceSound.volume = globalVolume * 0.3;
-            const playPromise = ambienceSound.play();
-
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log("Audio play failed, waiting for interaction:", error);
-                    document.body.addEventListener('click', function retryPlay() {
-                        ambienceSound.play().catch(e => console.log("Still failed:", e));
-                        document.body.removeEventListener('click', retryPlay);
-                    }, { once: true });
-                });
-            }
-        } catch (e) {
-            console.log("Ambience error:", e);
-        }
-    }
-
-    initializeGame();
+    initGame();
 });
